@@ -1076,7 +1076,7 @@
     <div class="hero">
 
       <!-- Gallery left -->
-      <div id="galleryCol" style="min-width:0;position:sticky;align-self:flex-start;">
+      <div id="galleryCol" style="min-width:0;align-self:flex-start;">
         <div class="gallery-main" id="galleryMain">
           <img id="gallerySlide0" src="images/Generated Image April 20, 2026 - 3_34PM.jpg" style="display:block;" />
           <img id="gallerySlide1" src="images/Generated Image April 20, 2026 - 4_15PM.jpg" style="display:none;" />
@@ -2566,9 +2566,15 @@
       });
     });
 
-    // Gallery sticky — center on screen
+    // Gallery sticky — desktop only
     const galleryCol = document.getElementById('galleryCol');
     function updateGalleryTop() {
+      if (window.innerWidth <= 768) {
+        galleryCol.style.position = 'static';
+        galleryCol.style.top = 'auto';
+        return;
+      }
+      galleryCol.style.position = 'sticky';
       const colH = galleryCol.offsetHeight;
       const headerH = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0;
       const top = Math.max(headerH + 10, Math.floor((window.innerHeight - colH) / 2));
