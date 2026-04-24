@@ -993,6 +993,31 @@
         width: 100% !important;
       }
 
+      /* 3. Sekcja "7 zmian" — boxy: cena na dole, tekst pod zdjęciem */
+      .zmiana-img-box {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+      .zmiana-img-placeholder {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: 180px !important;
+        order: -1;
+      }
+
+      /* 4. "Czy 26zł" boxy — układ pionowy, cena na dole i większa */
+      .price-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+      }
+      .price-tag {
+        font-size: 20px !important;
+        white-space: normal !important;
+        flex-shrink: unset !important;
+        margin-top: 10px !important;
+        align-self: flex-end !important;
+      }
+
       /* Padding sekcji na mobile */
       section[style*="padding:70px"] {
         padding-top: 40px !important;
@@ -1001,6 +1026,9 @@
 
       /* Nagłówki — mniejsze na mobile */
       h2 { line-height: 1.2 !important; }
+
+      /* 1. Galeria — NIE sticky na mobile */
+      #galleryCol { position: static !important; top: auto !important; }
 
       /* Miniaturki galerii → ukryte na mobile */
       .gallery-nav { display: none !important; }
@@ -1330,9 +1358,9 @@
     <!-- Mobile: carousel -->
     <div class="ugc-carousel" style="display:none;position:relative;">
       <div id="ugcTrack" style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 20px;padding-right:60px;">
-        <video src="Character_shows_product_202604201555.mp4" style="border-radius:12px;aspect-ratio:9/16;min-width:78vw;flex-shrink:0;scroll-snap-align:start;object-fit:cover;" autoplay playsinline muted loop></video>
-        <video src="Character_smiles_says_202604201649.mp4"   style="border-radius:12px;aspect-ratio:9/16;min-width:78vw;flex-shrink:0;scroll-snap-align:start;object-fit:cover;" autoplay playsinline muted loop></video>
-        <video src="Character_smiles_at_202604201751.mp4"    style="border-radius:12px;aspect-ratio:9/16;min-width:78vw;flex-shrink:0;scroll-snap-align:start;object-fit:cover;" autoplay playsinline muted loop></video>
+        <video src="Character_shows_product_202604201555.mp4" style="border-radius:12px;aspect-ratio:9/16;min-width:67vw;flex-shrink:0;scroll-snap-align:start;object-fit:cover;" autoplay playsinline muted loop></video>
+        <video src="Character_smiles_says_202604201649.mp4"   style="border-radius:12px;aspect-ratio:9/16;min-width:67vw;flex-shrink:0;scroll-snap-align:start;object-fit:cover;" autoplay playsinline muted loop></video>
+        <video src="Character_smiles_at_202604201751.mp4"    style="border-radius:12px;aspect-ratio:9/16;min-width:67vw;flex-shrink:0;scroll-snap-align:start;object-fit:cover;" autoplay playsinline muted loop></video>
       </div>
       <!-- Strzałka -->
       <button onclick="document.getElementById('ugcTrack').scrollBy({left: window.innerWidth * 0.82, behavior:'smooth'})"
@@ -2148,36 +2176,36 @@
 
       <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px;">
 
-        <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
+        <div class="price-row" style="border:1.5px solid #e8e8e8;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
           <div style="flex:1;">
             <div style="font-size:16px;font-weight:700;color:#1A1A1A;margin-bottom:6px;">🍰 Codzienne drobnostki "na poprawę humoru"</div>
             <div style="font-size:15px;color:#2a2a2a;line-height:1.6;">Kawałek ciasta z piekarni, ulubiona gazeta, coś słodkiego do popołudniowej kawy. Drobne zakupy, którymi często pocieszamy się, gdy brakuje nam energii do działania.</div>
           </div>
-          <div style="font-size:15px;font-weight:700;color:var(--navy);white-space:nowrap;flex-shrink:0;">~ 8–12 zł / dzień</div>
+          <div class="price-tag" style="font-size:15px;font-weight:700;color:var(--navy);white-space:nowrap;flex-shrink:0;">~ 8–12 zł / dzień</div>
         </div>
 
-        <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
+        <div class="price-row" style="border:1.5px solid #e8e8e8;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
           <div style="flex:1;">
             <div style="font-size:16px;font-weight:700;color:#1A1A1A;margin-bottom:6px;">💊 Podstawowa apteczka "na przetrwanie"</div>
             <div style="font-size:15px;color:#2a2a2a;line-height:1.6;">Magnez z reklamy, herbatka na sen, zwykłe tabletki i maści. Zostawiasz w aptece kilkadziesiąt złotych co kilka dni, próbując doraźnie ratować swoje samopoczucie.</div>
           </div>
-          <div style="font-size:15px;font-weight:700;color:var(--navy);white-space:nowrap;flex-shrink:0;">~ 5–8 zł / dzień</div>
+          <div class="price-tag" style="font-size:15px;font-weight:700;color:var(--navy);white-space:nowrap;flex-shrink:0;">~ 5–8 zł / dzień</div>
         </div>
 
-        <div style="border:1.5px solid #2e7d32;border-radius:12px;padding:20px 24px;background:#f1f8f1;display:flex;align-items:center;gap:20px;">
+        <div class="price-row" style="border:1.5px solid #2e7d32;border-radius:12px;padding:20px 24px;background:#f1f8f1;display:flex;align-items:center;gap:20px;">
           <div style="flex:1;">
             <div style="font-size:16px;font-weight:700;color:#1A1A1A;margin-bottom:6px;">🌿 ROOT Zestaw Trinity — Kompleksowe wsparcie</div>
             <div style="font-size:15px;color:#2a2a2a;line-height:1.6;">Za równowartość obiadu w barze mlecznym otrzymujesz 3 zaawansowane formuły, które celują w podstawy znużenia i obciążeń organizmu, a nie tylko w ich maskowanie.</div>
           </div>
-          <div style="font-size:15px;font-weight:700;color:#2e7d32;white-space:nowrap;flex-shrink:0;">~ 26 zł / dzień ✓</div>
+          <div class="price-tag" style="font-size:15px;font-weight:700;color:#2e7d32;white-space:nowrap;flex-shrink:0;">~ 26 zł / dzień ✓</div>
         </div>
 
-        <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
+        <div class="price-row" style="border:1.5px solid #e8e8e8;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
           <div style="flex:1;">
             <div style="font-size:16px;font-weight:700;color:#1A1A1A;margin-bottom:6px;">⏳ Odkładanie własnego życia na "kiedyś"</div>
             <div style="font-size:15px;color:#2a2a2a;line-height:1.6;">Dni, które po prostu "przeczekujesz" przed telewizorem z braku sił. Omijane spacery, rezygnacja ze spotkań. Poczucia uciekającego czasu nie da się wycenić.</div>
           </div>
-          <div style="font-size:15px;font-weight:700;color:#c0392b;white-space:nowrap;flex-shrink:0;">Koszt: Najwyższy</div>
+          <div class="price-tag" style="font-size:15px;font-weight:700;color:#c0392b;white-space:nowrap;flex-shrink:0;">Koszt: Najwyższy</div>
         </div>
 
       </div>
