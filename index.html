@@ -139,6 +139,10 @@
     .thumb:first-child { border-color: var(--navy); }
     .thumb img { width: 100%; height: 100%; object-fit: cover; }
 
+    /* Mobile gallery overlay — ukryte na desktop */
+    .mob-gallery-btn { display: none; }
+    .mob-gallery-dots { display: none; }
+
     /* Buy box */
     .buy-box h1 {
       font-size: 36px;
@@ -998,6 +1002,48 @@
       /* Nagłówki — mniejsze na mobile */
       h2 { line-height: 1.2 !important; }
 
+      /* Miniaturki galerii → ukryte na mobile */
+      .gallery-nav { display: none !important; }
+
+      /* Strzałki nakładane na zdjęcie */
+      .mob-gallery-btn {
+        display: flex !important;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(0,0,0,.45);
+        border: none;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+      }
+      .mob-gallery-prev { left: 10px; }
+      .mob-gallery-next { right: 10px; }
+
+      /* Kropki na dole zdjęcia */
+      .mob-gallery-dots {
+        display: flex !important;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 6px;
+        z-index: 10;
+      }
+      .mob-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: rgba(255,255,255,.55);
+        cursor: pointer;
+        transition: background .2s;
+      }
+      .mob-dot.active { background: #fff; }
+
       /* Logo mniejsze */
       header img { height: 48px !important; }
 
@@ -1057,6 +1103,26 @@
           <img id="gallerySlide7" src="images/Generated Image April 20, 2026 - 7_35PM.jpg" style="display:none;" />
           <img id="gallerySlide8" src="images/Generated Image April 20, 2026 - 7_39PM.jpg" style="display:none;" />
           <img id="gallerySlide9" src="images/Generated Image April 20, 2026 - 7_47PM.jpg" style="display:none;" />
+
+          <!-- Mobile overlay: arrows + dots -->
+          <button class="mob-gallery-btn mob-gallery-prev" onclick="galleryMove(-1)">
+            <svg viewBox="0 0 10 14" fill="none" stroke="white" stroke-width="2.5"><polyline points="8,1 2,7 8,13"/></svg>
+          </button>
+          <button class="mob-gallery-btn mob-gallery-next" onclick="galleryMove(1)">
+            <svg viewBox="0 0 10 14" fill="none" stroke="white" stroke-width="2.5"><polyline points="2,1 8,7 2,13"/></svg>
+          </button>
+          <div class="mob-gallery-dots" id="mobGalleryDots">
+            <span class="mob-dot active" onclick="galleryGoto(0)"></span>
+            <span class="mob-dot" onclick="galleryGoto(1)"></span>
+            <span class="mob-dot" onclick="galleryGoto(2)"></span>
+            <span class="mob-dot" onclick="galleryGoto(3)"></span>
+            <span class="mob-dot" onclick="galleryGoto(4)"></span>
+            <span class="mob-dot" onclick="galleryGoto(5)"></span>
+            <span class="mob-dot" onclick="galleryGoto(6)"></span>
+            <span class="mob-dot" onclick="galleryGoto(7)"></span>
+            <span class="mob-dot" onclick="galleryGoto(8)"></span>
+            <span class="mob-dot" onclick="galleryGoto(9)"></span>
+          </div>
         </div>
         <div class="gallery-nav">
           <button class="gallery-btn" id="galleryPrev" onclick="galleryMove(-1)">
@@ -2501,6 +2567,8 @@
       const thumbW = thumbEl.offsetWidth + 10;
       const offset = Math.max(0, galleryIndex - galleryVisible + 2) * thumbW;
       document.getElementById('galleryThumbs').style.transform = 'translateX(-' + offset + 'px)';
+      // update mobile dots
+      document.querySelectorAll('.mob-dot').forEach((d, i) => d.classList.toggle('active', i === galleryIndex));
     }
 
     function galleryMove(dir) { galleryGoto(galleryIndex + dir); }
