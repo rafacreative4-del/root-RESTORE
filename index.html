@@ -939,197 +939,6 @@
       color: var(--gray-400);
     }
 
-    /* ─── MOBILE ─────────────────────────────── */
-    @media (max-width: 768px) {
-
-      /* Science rows: 3 boxy poziome → pionowe */
-      .science-row {
-        flex-direction: column !important;
-        gap: 12px !important;
-      }
-      .science-row > div[style*="flex-shrink:0"] {
-        display: none !important; /* strzałki → */
-      }
-      .science-row > div[style*="flex:1"] {
-        min-width: 0 !important;
-      }
-
-      /* Before/After grid → 1 kolumna */
-      .before-after-grid {
-        grid-template-columns: 1fr !important;
-      }
-
-      /* 7 zmian: zdjęcie + tekst → pionowo */
-      .zmiana-img-box {
-        flex-direction: column !important;
-        align-items: stretch !important;
-      }
-      .zmiana-img-placeholder {
-        width: 100% !important;
-        min-width: 0 !important;
-        height: 200px !important;
-      }
-
-      /* Siatka 2 zdjęć → 1 kolumna */
-      .photo-grid-2col {
-        grid-template-columns: 1fr !important;
-      }
-
-      /* Porównanie ROOT vs inne → 1 kolumna */
-      .compare-grid {
-        grid-template-columns: 1fr !important;
-      }
-
-      /* 4-kolumnowa siatka opinii → 1 kolumna */
-      .review-grid-4col {
-        grid-template-columns: 1fr !important;
-      }
-
-      /* Opcje zakupu (qty) → pionowo */
-      .qty-options {
-        flex-direction: column !important;
-      }
-      .qty-option {
-        width: 100% !important;
-      }
-
-      /* 3. Sekcja "7 zmian" — boxy: cena na dole, tekst pod zdjęciem */
-      .zmiana-img-box {
-        flex-direction: column !important;
-        align-items: stretch !important;
-      }
-      .zmiana-img-placeholder {
-        width: 100% !important;
-        min-width: 0 !important;
-        height: 180px !important;
-        order: -1;
-      }
-
-      /* 4. "Czy 26zł" boxy — układ pionowy, cena na dole i większa */
-      .price-row {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-      }
-      .price-tag {
-        font-size: 20px !important;
-        white-space: normal !important;
-        flex-shrink: unset !important;
-        margin-top: 10px !important;
-        align-self: flex-end !important;
-      }
-
-      /* Padding sekcji na mobile */
-      section[style*="padding:70px"] {
-        padding-top: 40px !important;
-        padding-bottom: 40px !important;
-      }
-
-      /* Nagłówki — mniejsze na mobile */
-      h2 { line-height: 1.2 !important; }
-
-      /* ── Buy box / Hero ── */
-      .hero {
-        padding: 20px 16px !important;
-        gap: 24px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-      }
-      .buy-box {
-        max-width: 100% !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        overflow: hidden !important;
-      }
-      .buy-box h1 { font-size: 26px !important; }
-      .qty-name { font-size: 14px !important; }
-      .qty-sub { font-size: 10.5px !important; }
-      .qty-price-now { font-size: 13px !important; }
-      .qty-price-was { font-size: 10px !important; }
-      .qty-badge {
-        font-size: 9px !important;
-        padding: 2px 5px !important;
-        letter-spacing: 0 !important;
-        white-space: nowrap !important;
-        max-width: 120px !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-      }
-      .low-stock-badge {
-        display: flex !important;
-        white-space: normal !important;
-        font-size: 12px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-      }
-      .bullets { padding-left: 0 !important; }
-      .bullets li {
-        font-size: 14px !important;
-        word-break: break-word !important;
-      }
-      div[id^="qty-img-"] {
-        width: 70px !important;
-        height: 70px !important;
-        min-width: 70px !important;
-      }
-
-      /* 1. Galeria — NIE sticky na mobile */
-      #galleryCol { position: static !important; top: auto !important; }
-
-      /* Miniaturki galerii → ukryte na mobile */
-      .gallery-nav { display: none !important; }
-
-      /* Strzałki nakładane na zdjęcie */
-      .mob-gallery-btn {
-        display: flex !important;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: rgba(0,0,0,.45);
-        border: none;
-        cursor: pointer;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-      }
-      .mob-gallery-prev { left: 10px; }
-      .mob-gallery-next { right: 10px; }
-
-      /* Kropki na dole zdjęcia */
-      .mob-gallery-dots {
-        display: flex !important;
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        gap: 6px;
-        z-index: 10;
-      }
-      .mob-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: rgba(255,255,255,.55);
-        cursor: pointer;
-        transition: background .2s;
-      }
-      .mob-dot.active { background: #fff; }
-
-      /* Logo mniejsze */
-      header img { height: 48px !important; }
-
-      /* Hero banner niższy */
-      div[style*="height:400px"] { height: 220px !important; }
-
-      /* Mniejszy spacing między hero a karuzelą */
-      section[style*="padding: clamp(30px"] {
-        padding-top: 16px !important;
-        padding-bottom: 16px !important;
-      }
-    }
-
     /* ─── RESPONSIVE ────────────────────────── */
     @media (max-width: 900px) {
       .hero, .review-strip-inner, .two-col { grid-template-columns: 1fr; }
@@ -1144,6 +953,109 @@
       footer { padding: 30px 20px; }
       .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+
+    /* ─── MOBILE 768px ───────────────────────── */
+    @media (max-width: 768px) {
+
+      /* Hero padding ściśnięty */
+      .hero { padding: 16px 16px !important; gap: 20px !important; }
+
+      /* Buy box nie wychodzi poza ekran */
+      .buy-box { max-width: 100%; overflow: hidden; }
+      .buy-box h1 { font-size: 26px !important; }
+
+      /* Bullets */
+      .bullets { padding-left: 0 !important; list-style: none !important; }
+      .bullets li { font-size: 14px !important; }
+
+      /* Low stock badge — nie ucina tekstu */
+      .low-stock-badge {
+        display: flex !important;
+        white-space: normal !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        font-size: 12px !important;
+      }
+
+      /* Qty opcje — obraz mniejszy */
+      div[id^="qty-img-"] {
+        width: 68px !important;
+        height: 68px !important;
+        min-width: 68px !important;
+      }
+      .qty-name { font-size: 14px !important; }
+      .qty-sub { font-size: 10px !important; }
+      .qty-price-now { font-size: 13px !important; }
+      .qty-price-was { font-size: 10px !important; }
+      .qty-badge {
+        font-size: 8px !important;
+        padding: 2px 5px !important;
+        letter-spacing: 0 !important;
+        max-width: 110px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+      }
+
+      /* Galeria — nie sticky */
+      #galleryCol { position: static !important; }
+      .gallery-nav { display: none !important; }
+
+      /* Strzałki + kropki na zdjęciu */
+      .mob-gallery-btn {
+        display: flex !important;
+        position: absolute;
+        top: 50%; transform: translateY(-50%);
+        width: 36px; height: 36px;
+        border-radius: 50%;
+        background: rgba(0,0,0,.45);
+        border: none; cursor: pointer;
+        align-items: center; justify-content: center;
+        z-index: 10;
+      }
+      .mob-gallery-prev { left: 10px; }
+      .mob-gallery-next { right: 10px; }
+      .mob-gallery-dots {
+        display: flex !important;
+        position: absolute; bottom: 10px;
+        left: 50%; transform: translateX(-50%);
+        gap: 6px; z-index: 10;
+      }
+      .mob-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.55); cursor: pointer; }
+      .mob-dot.active { background: #fff; }
+
+      /* Logo */
+      header img { height: 48px !important; }
+
+      /* Hero banner */
+      div[style*="height:400px"] { height: 220px !important; }
+
+      /* Spacing sekcji z filmami */
+      section[style*="padding: clamp(30px"] {
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+      }
+
+      /* Science rows pionowo */
+      .science-row { flex-direction: column !important; gap: 12px !important; }
+      .science-row > div[style*="flex-shrink:0"] { display: none !important; }
+
+      /* Gridy → 1 kolumna */
+      .before-after-grid, .photo-grid-2col, .compare-grid { grid-template-columns: 1fr !important; }
+      .review-grid-4col { grid-template-columns: 1fr !important; }
+
+      /* 7 zmian box */
+      .zmiana-img-box { flex-direction: column !important; align-items: stretch !important; }
+      .zmiana-img-placeholder { width: 100% !important; min-width: 0 !important; height: 180px !important; order: -1; }
+
+      /* Ceny — pionowo, cena na dole */
+      .price-row { flex-direction: column !important; align-items: flex-start !important; }
+      .price-tag { font-size: 20px !important; white-space: normal !important; margin-top: 10px !important; align-self: flex-end !important; }
+
+      /* Padding sekcji */
+      section[style*="padding:70px"] { padding-top: 40px !important; padding-bottom: 40px !important; }
+      h2 { line-height: 1.2 !important; }
     }
   </style>
 </head>
