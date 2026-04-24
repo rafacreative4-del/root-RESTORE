@@ -935,6 +935,70 @@
       color: var(--gray-400);
     }
 
+    /* ─── MOBILE ─────────────────────────────── */
+    @media (max-width: 768px) {
+
+      /* Science rows: 3 boxy poziome → pionowe */
+      .science-row {
+        flex-direction: column !important;
+        gap: 12px !important;
+      }
+      .science-row > div[style*="flex-shrink:0"] {
+        display: none !important; /* strzałki → */
+      }
+      .science-row > div[style*="flex:1"] {
+        min-width: 0 !important;
+      }
+
+      /* Before/After grid → 1 kolumna */
+      .before-after-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* 7 zmian: zdjęcie + tekst → pionowo */
+      .zmiana-img-box {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+      .zmiana-img-placeholder {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: 200px !important;
+      }
+
+      /* Siatka 2 zdjęć → 1 kolumna */
+      .photo-grid-2col {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Porównanie ROOT vs inne → 1 kolumna */
+      .compare-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* 4-kolumnowa siatka opinii → 1 kolumna */
+      .review-grid-4col {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Opcje zakupu (qty) → pionowo */
+      .qty-options {
+        flex-direction: column !important;
+      }
+      .qty-option {
+        width: 100% !important;
+      }
+
+      /* Padding sekcji na mobile */
+      section[style*="padding:70px"] {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+      }
+
+      /* Nagłówki — mniejsze na mobile */
+      h2 { line-height: 1.2 !important; }
+    }
+
     /* ─── RESPONSIVE ────────────────────────── */
     @media (max-width: 900px) {
       .hero, .review-strip-inner, .two-col { grid-template-columns: 1fr; }
@@ -1225,7 +1289,7 @@
         <div>
           <div style="font-size:28px;font-weight:700;color:var(--gray-800);margin-bottom:6px;text-align:center;">Clean Slate</div>
           <p style="font-size:16px;color:var(--gray-600);line-height:1.6;margin-bottom:24px;text-align:center;">Clean Slate pomaga organizmowi usuwać toksyny środowiskowe<br>i wspiera naturalne szlaki detoksykacji.</p>
-          <div style="display:flex;align-items:stretch;gap:16px;">
+          <div class="science-row" style="display:flex;align-items:stretch;gap:16px;">
 
             <div style="flex:1;display:flex;flex-direction:column;gap:0;min-width:0;">
               <div style="background:#d0d0d0;border-radius:12px 12px 0 0;aspect-ratio:1/1;width:100%;"></div>
@@ -1264,7 +1328,7 @@
         <div>
           <div style="font-size:28px;font-weight:700;color:var(--gray-800);margin-bottom:6px;text-align:center;">Zero-In</div>
           <p style="font-size:16px;color:var(--gray-600);line-height:1.6;margin-bottom:24px;text-align:center;">Zero-In wspiera koncentrację, jasność umysłu i równowagę neuroprzekaźników,<br>poprawiając sprawność mentalną.</p>
-          <div style="display:flex;align-items:stretch;gap:16px;">
+          <div class="science-row" style="display:flex;align-items:stretch;gap:16px;">
 
             <div style="flex:1;display:flex;flex-direction:column;gap:0;min-width:0;">
               <div style="background:#d0d0d0;border-radius:12px 12px 0 0;aspect-ratio:1/1;width:100%;"></div>
@@ -1303,7 +1367,7 @@
         <div>
           <div style="font-size:28px;font-weight:700;color:var(--gray-800);margin-bottom:6px;text-align:center;">Restore</div>
           <p style="font-size:16px;color:var(--gray-600);line-height:1.6;margin-bottom:24px;text-align:center;">Restore dba o naturalną równowagę mikrobiomu<br>i wspiera optymalne środowisko wewnętrzne Twojego organizmu.</p>
-          <div style="display:flex;align-items:stretch;gap:16px;">
+          <div class="science-row" style="display:flex;align-items:stretch;gap:16px;">
 
             <div style="flex:1;display:flex;flex-direction:column;gap:0;min-width:0;">
               <div style="background:#d0d0d0;border-radius:12px 12px 0 0;aspect-ratio:1/1;width:100%;"></div>
@@ -1353,7 +1417,7 @@
 
       <!-- Before/After photos -->
       <div style="border:1.5px solid #d4c9a8;border-radius:16px;overflow:hidden;margin-bottom:16px;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;">
+        <div class="before-after-grid" style="display:grid;grid-template-columns:1fr 1fr;">
 
           <!-- Left: before -->
           <div style="position:relative;">
@@ -1567,13 +1631,13 @@
 
       </div>
 
-      <div style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:14px;padding:12px;display:flex;align-items:center;gap:20px;margin-bottom:36px;">
-        <div style="width:200px;min-width:200px;height:160px;background:#d9d9d9;border-radius:8px;flex-shrink:0;"></div>
+      <div class="zmiana-img-box" style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:14px;padding:12px;display:flex;align-items:center;gap:20px;margin-bottom:36px;">
+        <div class="zmiana-img-placeholder" style="width:200px;min-width:200px;height:160px;background:#d9d9d9;border-radius:8px;flex-shrink:0;"></div>
         <div><div style="font-weight:700;font-size:16px;color:#1A1A1A;margin-bottom:6px;">Komfort po każdym posiłku</div><div style="font-size:13.5px;color:#2a2a2a;line-height:1.6;">Znika frustrujące uczucie dyskomfortu i ciężkości w brzuchu. Twój mikrobiom dostaje odpowiednie wsparcie, a Ty czujesz się lekko od samego rana.</div></div>
       </div>
 
       <!-- 2 photos -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+      <div class="photo-grid-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
         <div style="position:relative;border-radius:14px;overflow:hidden;">
           <div style="background:#7a8fa0;aspect-ratio:4/5;width:100%;"></div>
           <div style="position:absolute;bottom:12px;left:12px;display:flex;gap:2px;">
@@ -1688,7 +1752,7 @@
       <div style="font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#b8922a;text-align:center;margin-bottom:14px;">Dlaczego ROOT Brands</div>
       <h2 style="font-size:clamp(26px,3.5vw,44px);font-weight:800;color:var(--gray-800);text-align:center;margin-bottom:36px;">ROOT Brands vs. inne suplementy ze sklepu</h2>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
+      <div class="compare-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
 
         <div style="border:1.5px solid var(--border);border-radius:14px;padding:28px;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
@@ -1775,7 +1839,7 @@
       <div style="font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.75);text-align:center;margin-bottom:14px;">Różnica</div>
       <h2 style="font-size:clamp(26px,3.5vw,44px);font-weight:800;color:#fff;text-align:center;margin-bottom:36px;">Przed i po protokole ROOT Brands</h2>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
+      <div class="compare-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
 
         <div style="background:#fff0f0;border:1.5px solid #f5c6c6;border-radius:14px;padding:28px;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
@@ -2213,7 +2277,7 @@
       </div>
 
       <!-- 4-col review grid -->
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;align-items:start;">
+      <div class="review-grid-4col" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;align-items:start;">
 
         <!-- Col 1 -->
         <div style="display:flex;flex-direction:column;gap:12px;">
