@@ -49,7 +49,7 @@
 
     /* ─── HERO ───────────────────────────────── */
     .hero {
-      max-width: 1300px;
+      max-width: 1920px;
       margin: 0 auto;
       padding: 40px 70px;
       display: grid;
@@ -145,7 +145,7 @@
 
     /* Buy box */
     .buy-box h1 {
-      font-size: 36px;
+      font-size: 52px;
       font-weight: 700;
       line-height: 1.2;
       color: var(--gray-800);
@@ -198,11 +198,12 @@
 
     .bullets li {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       gap: 10px;
-      font-size: 17px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--gray-800);
+      white-space: nowrap;
     }
 
     .bullets li .emoji {
@@ -217,7 +218,7 @@
       gap: 6px;
       border: 1.5px solid var(--red);
       color: var(--red);
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 600;
       padding: 5px 12px;
       border-radius: 20px;
@@ -380,9 +381,10 @@
     /* Trust badges */
     .trust-badges {
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
+      gap: 16px;
       margin-bottom: 20px;
-      padding: 0 10px;
+      padding: 0;
     }
 
     .trust-item {
@@ -482,17 +484,16 @@
       text-align: left;
     }
 
-    .accordion-header svg {
-      width: 16px;
-      height: 16px;
-      stroke: var(--gray-600);
-      fill: none;
-      stroke-width: 2;
-      transition: transform .25s;
+    .accordion-plus {
+      font-size: 32px;
+      font-weight: 400;
+      color: #1A1A1A;
       flex-shrink: 0;
+      line-height: 1;
+      transition: transform .25s;
     }
 
-    .accordion-item.open .accordion-header svg { transform: rotate(180deg); }
+    .accordion-item.open .accordion-plus { transform: rotate(45deg); }
 
     .accordion-body {
       display: none;
@@ -1068,7 +1069,6 @@
 
   <!-- HERO BANNER -->
   <div style="width:100%;height:400px;background:#d0d0d0;position:relative;overflow:hidden;">
-    <!-- Zastąp background:#d0d0d0 przez background:url('ścieżka/do/zdjęcia') center/cover no-repeat -->
     <div style="position:absolute;inset:0;display:flex;align-items:center;">
       <div style="width:100%;max-width:1300px;margin:0 auto;padding:0 70px;box-sizing:border-box;">
         <div style="max-width:560px;">
@@ -1084,9 +1084,9 @@
     <div class="hero">
 
       <!-- Gallery left -->
-      <div id="galleryCol" style="min-width:0;align-self:flex-start;">
+      <div id="galleryCol" style="min-width:0;align-self:flex-start;position:sticky;top:20px;">
         <div class="gallery-main" id="galleryMain">
-          <img id="gallerySlide0" src="images/Generated Image April 20, 2026 - 3_34PM.jpg" style="display:block;" />
+          <img id="gallerySlide0" src="images/Gemini_Generated_Image_o8xg2eo8xg2eo8xg_cleanup.webp" style="display:block;" />
           <img id="gallerySlide1" src="images/Generated Image April 20, 2026 - 4_15PM.jpg" style="display:none;" />
           <img id="gallerySlide2" src="images/Generated Image April 20, 2026 - 4_22PM.jpg" style="display:none;" />
           <img id="gallerySlide3" src="images/Generated Image April 20, 2026 - 4_31PM.jpg" style="display:none;" />
@@ -1117,33 +1117,17 @@
             <span class="mob-dot" onclick="galleryGoto(9)"></span>
           </div>
         </div>
-        <div class="gallery-nav">
-          <button class="gallery-btn" id="galleryPrev" onclick="galleryMove(-1)">
-            <svg viewBox="0 0 10 14"><polyline points="8,1 2,7 8,13"/></svg>
-          </button>
-          <div class="thumbs-wrap">
-            <div class="thumbs" id="galleryThumbs">
-              <div class="thumb" onclick="galleryGoto(0)"><img src="images/Generated Image April 20, 2026 - 3_34PM.jpg" /></div>
-              <div class="thumb" onclick="galleryGoto(1)"><img src="images/Generated Image April 20, 2026 - 4_15PM.jpg" /></div>
-              <div class="thumb" onclick="galleryGoto(2)"><img src="images/Generated Image April 20, 2026 - 4_22PM.jpg" /></div>
-              <div class="thumb" onclick="galleryGoto(3)"><img src="images/Generated Image April 20, 2026 - 4_31PM.jpg" /></div>
-              <div class="thumb" onclick="galleryGoto(4)"><img src="images/Generated Image April 20, 2026 - 5_32PM.jpg" /></div>
-              <div class="thumb" onclick="galleryGoto(5)"><img src="images/Generated Image April 20, 2026 - 7_16PM.jpg" /></div>
-              <div class="thumb" onclick="galleryGoto(6)"><img src="images/Generated Image April 20, 2026 - 7_30PM.jpg" /></div>
-              <div class="thumb" onclick="galleryGoto(7)"><img src="images/Generated Image April 20, 2026 - 7_35PM.jpg" /></div>
-              <div class="thumb" onclick="galleryGoto(8)"><img src="images/Generated Image April 20, 2026 - 7_39PM.jpg" /></div>
-              <div class="thumb" onclick="galleryGoto(9)"><img src="images/Generated Image April 20, 2026 - 7_47PM.jpg" /></div>
-            </div>
-          </div>
-          <button class="gallery-btn" id="galleryNext" onclick="galleryMove(1)">
-            <svg viewBox="0 0 10 14"><polyline points="2,1 8,7 2,13"/></svg>
-          </button>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+          <div style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--gray-100);"><img src="images/Generated Image April 20, 2026 - 4_15PM.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+          <div style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--gray-100);"><img src="images/Generated Image April 20, 2026 - 4_22PM.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+          <div style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--gray-100);"><img src="images/Generated Image April 20, 2026 - 4_31PM.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+          <div style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--gray-100);"><img src="images/Generated Image April 20, 2026 - 5_32PM.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
         </div>
       </div>
 
       <!-- Buy box right -->
       <div class="buy-box">
-        <h1>Zestaw Trinity</h1>
+        <h1>RESTORE<br>15 SASZETEK</h1>
 
         <a href="https://www.trustpilot.com/review/therootbrands.com" target="_blank" rel="noopener" class="stars-row" style="text-decoration:none;">
           <div class="stars">
@@ -1156,93 +1140,89 @@
           <span class="rating-text">4,6 · 2 236 opinii</span>
         </a>
 
+        <p style="font-size:20px;font-weight:600;color:var(--gray-800);margin:0 0 16px;text-transform:uppercase;letter-spacing:0.05em;">Uczucie lekkości prosto z natury</p>
+
         <ul class="bullets">
-          <li><span class="emoji">🧠</span> Wsparcie jasności umysłu — lepsza koncentracja na co dzień</li>
-          <li><span class="emoji">⚡</span> Energia bez kawy — naturalna stymulacja dopaminy przez 14h</li>
-          <li><span class="emoji">🌿</span> Naturalne oczyszczanie — ułatwia prawidłowe procesy w ciele.</li>
-          <li><span class="emoji">😴</span> Spokojny i głęboki sen — ułatwia zasypianie i nocną regenerację</li>
-          <li><span class="emoji">🛡️</span> Silna odporność — dba o naturalne siły obronne organizmu.</li>
-          <li><span class="emoji">💚</span> 100% z natury — czysty skład bez syntetycznych dodatków</li>
+          <li><span class="emoji">🌿</span> Harmonia jelit — <span style="font-weight:500;">wspiera naturalną regenerację i równowagę mikrobiomu.</span></li>
+          <li><span class="emoji">🧠</span> Jasność umysłu — <span style="font-weight:500;">zdrowa oś jelitowo-mózgowa oddala codzienne znużenie.</span></li>
+          <li><span class="emoji">🍃</span> Komfort trawienny — <span style="font-weight:500;">roślinne esencje ułatwiają trawienie bez uczucia ciężkości.</span></li>
+          <li><span class="emoji">⚡</span> Szybka energia — <span style="font-weight:500;">wysoka wchłanialność nie obciąża układu pokarmowego.</span></li>
+          <li><span class="emoji">🛡️</span> Naturalna ochrona — <span style="font-weight:500;">dba o szczelną barierę jelitową i chroni komórki przed stresem.</span></li>
         </ul>
 
-        <div class="low-stock-badge">Ogromne zainteresowanie! Dołączyło już 3 847 kobiet z Polski</div>
-
-        <div class="qty-options">
-          <div class="qty-option">
-            <div id="qty-img-zacznij" style="width:90px;height:90px;border-radius:8px;overflow:hidden;flex-shrink:0;margin-right:12px;background:#ffffff;display:flex;align-items:center;justify-content:center;">
-              <img src="images/Value-Pack.png" alt="Value Pack" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div style="margin-bottom:20px;">
+          <p style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-600);margin:0 0 12px;">Życie jest lepsze gdy masz</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+            <div style="background:var(--gray-100);border-radius:12px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:15px;font-weight:500;color:var(--gray-800);text-align:center;">
+              <span style="font-size:32px;">🥗</span>Spokój po każdym posiłku
             </div>
-            <div class="qty-option-left" style="flex:1;">
-              <span class="qty-name">Zacznij od Nowa</span>
-              <span class="qty-sub">CLEAN SLATE + ZERO-IN · 60-dniowy detoks</span>
+            <div style="background:var(--gray-100);border-radius:12px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:15px;font-weight:500;color:var(--gray-800);text-align:center;">
+              <span style="font-size:32px;">🌻</span>Popołudnia pełne sił
             </div>
-            <div class="qty-price">
-              <div class="qty-price-now">541,00 zł</div>
-              <div class="qty-price-was">649,00 zł</div>
-            </div>
-          </div>
-
-          <div class="qty-option selected">
-            <div class="qty-badge">Najczęściej wybierana</div>
-            <div id="qty-img-pelna" style="width:90px;height:90px;border-radius:8px;overflow:hidden;flex-shrink:0;margin-right:12px;background:#ffffff;display:flex;align-items:center;justify-content:center;">
-              <img src="images/Trinity-Pack.png" alt="Zestaw Trinity" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            </div>
-            <div class="qty-option-left" style="flex:1;">
-              <span class="qty-name">Pełna Regeneracja</span>
-              <span class="qty-sub">CLEAN SLATE + ZERO-IN + RESTORE · 60-dniowy protokół</span>
-            </div>
-            <div class="qty-price">
-              <div class="qty-price-now">775,00 zł</div>
-              <div class="qty-price-was">929,00 zł</div>
-            </div>
-          </div>
-
-          <div class="qty-option">
-            <div class="qty-badge best">Najlepsza wartość</div>
-            <div id="qty-img-kompletna" style="width:90px;height:90px;border-radius:8px;overflow:hidden;flex-shrink:0;margin-right:12px;background:#ffffff;display:flex;align-items:center;justify-content:center;">
-              <img src="images/DrRahmPack.png" alt="DrRahm Pack" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            </div>
-            <div class="qty-option-left" style="flex:1;">
-              <span class="qty-name">Kompletna Przemiana</span>
-              <span class="qty-sub">CLEAN SLATE + ZERO-IN + RESTORE ×2 + RELIVE GREENS · Pełny protokół 90 dni</span>
-            </div>
-            <div class="qty-price">
-              <div class="qty-price-now">1.293,00 zł</div>
-              <div class="qty-price-was">1.549,00 zł</div>
+            <div style="background:var(--gray-100);border-radius:12px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:15px;font-weight:500;color:var(--gray-800);text-align:center;">
+              <span style="font-size:32px;">🚶‍♀️</span>Swobodny, lekki krok
             </div>
           </div>
         </div>
 
-        <div class="subscription-box" style="display:none;">
-          <div class="sub-checkbox">
-            <svg viewBox="0 0 14 14"><polyline points="2,7 6,11 12,3"/></svg>
-          </div>
-          <div class="sub-text">
-            <div class="sub-title">Zaoszczędź 10% przy automatycznej wysyłce</div>
-            <div class="sub-desc">Bez zobowiązań · Ekskluzywne rabaty · Anuluj w każdej chwili</div>
+        <div style="margin-bottom:24px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-600);margin:0 0 16px;">Główne składniki aktywne</p>
+          <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;text-align:center;">
+            <div>
+              <div style="width:80px;height:80px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Kurkuma.png" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Kurkuma</span>
+            </div>
+            <div>
+              <div style="width:80px;height:80px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Aloes.png" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Aloes</span>
+            </div>
+            <div>
+              <div style="width:80px;height:80px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Czarnuszka.png" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Czarnuszka</span>
+            </div>
+            <div>
+              <div style="width:80px;height:80px;border-radius:50%;background:var(--gray-100);border:2px solid var(--border);margin:0 auto 8px;"></div>
+              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Witamina C</span>
+            </div>
+            <div>
+              <div style="width:80px;height:80px;border-radius:50%;background:var(--gray-100);border:2px solid var(--border);margin:0 auto 8px;"></div>
+              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Ocet jabłkowy</span>
+            </div>
+            <div>
+              <div style="width:80px;height:80px;border-radius:50%;background:var(--gray-100);border:2px solid var(--border);margin:0 auto 8px;"></div>
+              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Resweratrol</span>
+            </div>
           </div>
         </div>
 
-        <button class="btn-cta">ZAMÓW TERAZ</button>
+        <div class="low-stock-badge">Ogromne zainteresowanie! Dołączyło już 1 267 kobiet z całej Polski</div>
 
-        <div class="trust-badges">
-          <div class="trust-item">
-            <div class="trust-icon">
-              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <span class="trust-label">Certyfikat<br>cGMP</span>
+        <div style="border:2px solid #1A1A1A;border-radius:16px;padding:20px;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+            <div style="width:20px;height:20px;border-radius:50%;border:6px solid #1A1A1A;flex-shrink:0;"></div>
+            <span style="font-size:20px;font-weight:700;color:#1A1A1A;">Jednorazowy zakup</span>
           </div>
-          <div class="trust-item">
-            <div class="trust-icon">
-              <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-            </div>
-            <span class="trust-label">Szybka<br>wysyłka</span>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:8px;">
+            <img src="images/restore-main.png" alt="RESTORE saszetki" style="height:140px;width:auto;object-fit:contain;" />
+            <span style="font-size:28px;font-weight:700;color:#1A1A1A;">273,00 zł/ 15szt.</span>
           </div>
-          <div class="trust-item">
-            <div class="trust-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <button class="btn-cta" style="margin:0;">Dodaj do koszyka</button>
+        </div>
+
+
+        <!-- Płatności -->
+        <div style="border:2px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden;">
+          <div style="padding:16px 20px;display:flex;align-items:center;justify-content:space-around;gap:16px;flex-wrap:wrap;">
+            <img src="images/Visa_Brandmark_Blue_RGB.png" alt="Visa" style="height:18px;width:auto;" />
+            <img src="images/Mastercard_2019_logo.svg" alt="Mastercard" style="height:22px;width:auto;" />
+            <img src="images/paypal-logo.png" alt="PayPal" style="height:18px;width:auto;" />
+            <img src="images/googlepay-logo.png" alt="Google Pay" style="height:18px;width:auto;" />
+          </div>
+          <div style="border-top:2px solid var(--border);padding:8px 20px;display:flex;align-items:center;justify-content:center;gap:12px;">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--gray-800)" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
             </div>
-            <span class="trust-label">Gwarancja<br>90 dni</span>
+            <span style="font-size:16px;font-weight:500;color:var(--gray-800);">Dostawa do Polski: <strong>37 zł</strong></span>
           </div>
         </div>
 
@@ -1255,39 +1235,82 @@
             </div>
           </div>
           <div style="font-size:17px;line-height:1.7;color:#1A1A1A;">
-            Stworzyłam Zestaw Trinity, ponieważ moje lata pracy jako naukowiec w branży biotechnologicznej pokazały mi, jak ważne jest docieranie do samych korzeni naszego samopoczucia. Dzisiejsze tempo życia, wszechobecny stres i obciążenia środowiskowe potrafią zaburzyć naszą wewnętrzną równowagę, powoli odbierając nam witalność... i postanowiłam to zmienić. Zestaw Trinity to moja odpowiedź i wizja holistycznego podejścia: to codzienne wsparcie naturalnych procesów w ciele, które przywraca harmonię i daje Ci <strong>realną kontrolę nad tym, jak czujesz się każdego dnia.</strong>
+            Stworzyłam Restore, ponieważ lata obserwacji potwierdziły jedno: <strong>Twoja energia, odporność i nastrój mają swoje źródło w jelitach.</strong> Dzisiejszy pośpiech, przetworzona żywność i stres systematycznie osłabiają tę naturalną barierę ochronną, co z czasem <strong>odczuwasz w całym ciele.</strong> Restore to moja odpowiedź. To codzienny rytuał, który <strong>działa u samych podstaw</strong> – łagodnie wspiera <strong>równowagę mikrobiomu i szczelność jelit.</strong> Gdy Twoje jelita odzyskują harmonię, <strong>Ty odzyskujesz siebie:</strong> budzisz się z nową energią, cieszysz się spokojnym trawieniem i witalnością, której od dawna Ci brakowało.
+          </div>
+        </div>
+
+        <div class="trust-badges">
+          <div class="trust-item">
+            <img src="images/BEZ_GLUTENU.png" alt="Bez glutenu" style="width:100px;height:100px;object-fit:contain;" />
+          </div>
+          <div class="trust-item">
+            <img src="images/BEZ_GMO.png" alt="Bez GMO" style="width:100px;height:100px;object-fit:contain;" />
+          </div>
+          <div class="trust-item">
+            <img src="images/Produkt_z_USA.png" alt="Produkt z USA" style="width:100px;height:100px;object-fit:contain;" />
           </div>
         </div>
 
         <div style="width:100%;display:block;">
         <div class="accordions">
-          <div class="accordion-item">
-            <button class="accordion-header" onclick="toggleAccordion(this)">
-              Co zawierają produkty?
-              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="accordion-body" style="font-size:17px;">
-              <strong>Clean Slate</strong> — biodostępna krzemionka z zeolitu klinoptylolit, witamina C. Wspomaga naturalne procesy oczyszczania organizmu.<br><br>
-              <strong>Zero-In</strong> — N-acetylo-L-tyrozyna (prekursor dopaminy), ekstrakt z kory sosny, kurkuma, świerzbiec właściwy, witamina D3. N-acetylo-L-tyrozyna wspiera prawidłową syntezę neuroprzekaźników.<br><br>
-              <strong>Restore</strong> — nanoemulsja wspierająca mikrobiom: babka płesznik, inulina z cykorii, aloes, antyoksydanty. Wspiera naturalną równowagę mikrobiomu. Zero wypełniaczy, zero syntetyków.
-            </div>
-          </div>
-          <div class="accordion-item">
+          <!-- Jak stosować — zawsze otwarte -->
+          <div class="accordion-item open">
             <button class="accordion-header" onclick="toggleAccordion(this)">
               Jak stosować?
-              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              <span class="accordion-plus">+</span>
             </button>
             <div class="accordion-body" style="font-size:17px;">
-              <strong>Clean Slate</strong>: 3 krople pod język rano, na czczo. <strong>Zero-In</strong>: 2 kapsułki rano z wodą (nie z kawą). <strong>Restore</strong>: 1 miarka proszku w szklance wody wieczorem. Dla najlepszych efektów stosuj przez minimum 30 dni — pełny protokół to 90 dni.
+              Wyciśnij zawartość saszetki bezpośrednio do ust lub rozpuść w szklance wody. Stosuj raz dziennie, najlepiej rano. Dla najlepszych efektów stosuj regularnie przez minimum 30 dni.<br><br>
+              <ul style="margin:0;padding-left:20px;line-height:1.8;">
+                <li>1/3 do 1 saszetki na początek</li>
+                <li>Można stosować rano lub wieczorem, z jedzeniem lub bez</li>
+                <li>Można dodawać do koktajli i jogurtów</li>
+              </ul>
             </div>
           </div>
           <div class="accordion-item">
             <button class="accordion-header" onclick="toggleAccordion(this)">
-              Wysyłka i zwroty
-              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              Lista składników aktywnych
+              <span class="accordion-plus">+</span>
+            </button>
+            <div class="accordion-body">
+              <img src="images/informacje-zywieniowe.png" alt="Informacje żywieniowe" style="max-width:100%;height:auto;display:block;border-radius:8px;" />
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              Przechowywanie
+              <span class="accordion-plus">+</span>
             </button>
             <div class="accordion-body" style="font-size:17px;">
-              Zamówienia wysyłane w ciągu <strong>1–2 dni</strong> roboczych. Dostawa do Polski w <strong>5–8 dni</strong>. Jeśli nie jesteś zadowolona — skontaktuj się z nami w ciągu <strong>90 dni</strong> i otrzymasz pełny zwrot pieniędzy. Bez pytań, bez odsyłania produktu.
+              Przechowywać w temperaturze pokojowej, z dala od wilgoci i bezpośredniego światła słonecznego. Trzymać z dala od dzieci.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              Środki ostrożności
+              <span class="accordion-plus">+</span>
+            </button>
+            <div class="accordion-body" style="font-size:17px;">
+              Suplement diety. Nie stosować jako zamiennika zróżnicowanej diety. Przed zastosowaniem skonsultuj się z lekarzem, szczególnie w przypadku ciąży, karmienia piersią lub przyjmowania leków.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              Producent
+              <span class="accordion-plus">+</span>
+            </button>
+            <div class="accordion-body" style="font-size:17px;">
+              ROOT Brands, USA. Produkowane w certyfikowanych obiektach cGMP.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+              Dostawa
+              <span class="accordion-plus">+</span>
+            </button>
+            <div class="accordion-body" style="font-size:17px;">
+              Zamówienia wysyłane w ciągu <strong>1–2 dni</strong> roboczych. Dostawa do Polski w <strong>5–8 dni</strong>. Jeśli nie jesteś zadowolona — skontaktuj się z nami w ciągu <strong>90 dni</strong> i otrzymasz pełny zwrot pieniędzy.
             </div>
           </div>
         </div>
