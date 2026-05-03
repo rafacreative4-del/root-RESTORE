@@ -1338,22 +1338,11 @@
         <span class="rating-text">4,6 · 2 236 opinii na Trustpilot</span>
       </a>
 
-      <!-- Carousel wrapper -->
-      <div style="position:relative;">
-        <!-- Arrow left -->
-        <button id="tcPrev" onclick="tcMove(-1)" style="position:absolute;left:-24px;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;border-radius:50%;border:1.5px solid #e8e8e8;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <!-- Arrow right -->
-        <button id="tcNext" onclick="tcMove(1)" style="position:absolute;right:-24px;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;border-radius:50%;border:1.5px solid #e8e8e8;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-
-        <!-- Track -->
-        <div id="tcTrack" style="display:flex;gap:20px;overflow:hidden;scroll-behavior:smooth;">
+      <!-- 3-col row -->
+      <div style="display:flex;gap:20px;align-items:stretch;">
 
           <!-- Card 1 -->
-          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:0 0 calc((100% - 20px * 1.5) / 2.5);min-width:0;">
+          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:1;min-width:0;">
             <div style="width:100%;aspect-ratio:4/3;background:#d0d0d0;"></div>
             <div style="padding:0 24px 28px;display:flex;flex-direction:column;gap:14px;">
             <div style="display:flex;gap:4px;">
@@ -1372,7 +1361,7 @@
           </div>
 
           <!-- Card 2 -->
-          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:0 0 calc((100% - 20px * 1.5) / 2.5);min-width:0;">
+          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:1;min-width:0;">
             <div style="width:100%;aspect-ratio:4/3;background:#d0d0d0;overflow:hidden;"><img src="images/review1.png" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
             <div style="padding:0 24px 28px;display:flex;flex-direction:column;gap:14px;">
             <div style="display:flex;gap:4px;">
@@ -1390,7 +1379,7 @@
           </div>
 
           <!-- Card 3 -->
-          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:0 0 calc((100% - 20px * 1.5) / 2.5);min-width:0;">
+          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:1;min-width:0;">
             <div style="width:100%;aspect-ratio:4/3;background:#d0d0d0;"></div>
             <div style="padding:0 24px 28px;display:flex;flex-direction:column;gap:14px;">
             <div style="display:flex;gap:4px;">
@@ -1408,23 +1397,9 @@
             </div>
           </div>
 
-        </div>
       </div>
     </div>
   </section>
-  <script>
-    (function(){
-      var track = document.getElementById('tcTrack');
-      var idx = 0;
-      var total = track.children.length;
-      function tcMove(dir){
-        var cardW = track.children[0].offsetWidth + 20;
-        idx = Math.max(0, Math.min(idx + dir, total - 1));
-        track.scrollTo({left: idx * cardW, behavior:'smooth'});
-      }
-      window.tcMove = tcMove;
-    })();
-  </script>
 
   <!-- CO MÓWIĄ KOBIETY -->
   <section style="background:#fff;padding:60px clamp(20px,5vw,70px);">
