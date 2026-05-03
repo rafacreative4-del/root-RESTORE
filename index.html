@@ -1338,60 +1338,85 @@
         <span class="rating-text">4,6 · 2 236 opinii na Trustpilot</span>
       </a>
 
-      <!-- 3-col grid -->
-      <div style="display:flex;flex-direction:row;gap:20px;align-items:stretch;">
+      <!-- Carousel wrapper -->
+      <div style="position:relative;">
+        <!-- Arrow left -->
+        <button id="tcPrev" onclick="tcMove(-1)" style="position:absolute;left:-24px;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;border-radius:50%;border:1.5px solid #e8e8e8;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <!-- Arrow right -->
+        <button id="tcNext" onclick="tcMove(1)" style="position:absolute;right:-24px;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;border-radius:50%;border:1.5px solid #e8e8e8;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
 
-        <!-- Card 1 -->
-        <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;">
-          <div style="display:flex;gap:4px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <!-- Track -->
+        <div id="tcTrack" style="display:flex;gap:20px;overflow:hidden;scroll-behavior:smooth;">
+
+          <!-- Card 1 -->
+          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;flex:0 0 calc((100% - 20px * 1.5) / 2.5);min-width:0;">
+            <div style="display:flex;gap:4px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p style="font-size:17px;color:#2a2a2a;text-align:left;line-height:1.7;">Zaczęłam stosować zestaw Trinity ponad rok temu, ale nie podchodziłam do tego zbyt konsekwentnie, aż do miesiąca, w którym nie mogłam sobie na niego pozwolić. Wykupiłam subskrypcję na kilka produktów, w tym Trinity, i efekty są po prostu niesamowite. Trzymajcie się protokołu i instrukcji. Polecam też poprawić jakość swojej diety, co naprawdę świetnie wspomaga cały organizm. Osobiście wybieram produkty o wysokiej gęstości odżywczej. Czuję, że mój organizm jest oczyszczony i mam więcej energii. Nie wiem, jak dziękować tej ekipie za ich ogromną wiedzę, pomoc, cierpliwość i to, że tak wiele mi wyjaśnili.</p>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #f0f0f0;">
+              <div style="width:36px;height:36px;border-radius:50%;background:#d0d0d0;flex-shrink:0;"></div>
+              <strong style="font-size:14px;color:var(--navy);">Sylwia J.</strong>
+            </div>
           </div>
-          <p style="font-size:17px;color:#2a2a2a;text-align:left;line-height:1.7;">Zaczęłam stosować zestaw Trinity ponad rok temu, ale nie podchodziłam do tego zbyt konsekwentnie, aż do miesiąca, w którym nie mogłam sobie na niego pozwolić. Wykupiłam subskrypcję na kilka produktów, w tym Trinity, i efekty są po prostu niesamowite. Trzymajcie się protokołu i instrukcji. Polecam też poprawić jakość swojej diety, co naprawdę świetnie wspomaga cały organizm. Osobiście wybieram produkty o wysokiej gęstości odżywczej. Czuję, że mój organizm jest oczyszczony i mam więcej energii. Nie wiem, jak dziękować tej ekipie za ich ogromną wiedzę, pomoc, cierpliwość i to, że tak wiele mi wyjaśnili.</p>
-          <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #f0f0f0;">
-            <div style="width:36px;height:36px;border-radius:50%;background:#d0d0d0;flex-shrink:0;"></div>
-            <strong style="font-size:14px;color:var(--navy);">Sylwia J.</strong>
+
+          <!-- Card 2 -->
+          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;flex:0 0 calc((100% - 20px * 1.5) / 2.5);min-width:0;">
+            <div style="display:flex;gap:4px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p style="font-size:17px;color:#2a2a2a;text-align:left;line-height:1.7;">Stosuję zestaw Trinity od nieco ponad miesiąca i byłam zaskoczona, że efekty pojawiły się tak szybko. Moje jelita pracują znacznie lepiej, stan zapalny wyraźnie się zmniejszył, a ja mam o wiele więcej energii. Dziękuję za stworzenie tak wysokiej jakości produktów, które naprawdę działają. Nie mogę się doczekać, by zobaczyć rezultaty za kilka kolejnych miesięcy!</p>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #f0f0f0;">
+              <div style="width:36px;height:36px;border-radius:50%;background:#d0d0d0;flex-shrink:0;"></div>
+              <strong style="font-size:14px;color:var(--navy);">Natalia K.</strong>
+            </div>
           </div>
+
+          <!-- Card 3 -->
+          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;flex:0 0 calc((100% - 20px * 1.5) / 2.5);min-width:0;">
+            <div style="display:flex;gap:4px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p style="font-size:17px;color:#2a2a2a;text-align:left;line-height:1.7;">Nasze zamówienie zostało złożone i zrealizowane terminowo. Zaczęliśmy stosować zestaw Trinity, czyli Restore, Zero-In oraz Clean Slate. W ciągu tygodnia oboje zauważyliśmy wyraźną zmianę w naszym nastroju i poziomie energii. Już to samo w sobie jest niezwykle budujące. Ja dodatkowo zauważyłam stabilizację i powrót ciśnienia do poziomu, który przestał być niepokojący. Na pewno będziemy kontynuować tę zdrowotną podróż.</p>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #f0f0f0;">
+              <div style="width:36px;height:36px;border-radius:50%;background:#d0d0d0;flex-shrink:0;"></div>
+              <strong style="font-size:14px;color:var(--navy);">Elżbieta K.</strong>
+            </div>
+          </div>
+
         </div>
-
-        <!-- Card 2 -->
-        <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;">
-          <div style="display:flex;gap:4px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p style="font-size:17px;color:#2a2a2a;text-align:left;line-height:1.7;">Stosuję zestaw Trinity od nieco ponad miesiąca i byłam zaskoczona, że efekty pojawiły się tak szybko. Moje jelita pracują znacznie lepiej, stan zapalny wyraźnie się zmniejszył, a ja mam o wiele więcej energii. Dziękuję za stworzenie tak wysokiej jakości produktów, które naprawdę działają. Nie mogę się doczekać, by zobaczyć rezultaty za kilka kolejnych miesięcy!</p>
-          <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #f0f0f0;">
-            <div style="width:36px;height:36px;border-radius:50%;background:#d0d0d0;flex-shrink:0;"></div>
-            <strong style="font-size:14px;color:var(--navy);">Natalia K.</strong>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;">
-          <div style="display:flex;gap:4px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <p style="font-size:17px;color:#2a2a2a;text-align:left;line-height:1.7;">Nasze zamówienie zostało złożone i zrealizowane terminowo. Zaczęliśmy stosować zestaw Trinity, czyli Restore, Zero-In oraz Clean Slate. W ciągu tygodnia oboje zauważyliśmy wyraźną zmianę w naszym nastroju i poziomie energii. Już to samo w sobie jest niezwykle budujące. Ja dodatkowo zauważyłam stabilizację i powrót ciśnienia do poziomu, który przestał być niepokojący. Na pewno będziemy kontynuować tę zdrowotną podróż.</p>
-          <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #f0f0f0;">
-            <div style="width:36px;height:36px;border-radius:50%;background:#d0d0d0;flex-shrink:0;"></div>
-            <strong style="font-size:14px;color:var(--navy);">Elżbieta K.</strong>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
+  <script>
+    (function(){
+      var track = document.getElementById('tcTrack');
+      var idx = 0;
+      var total = track.children.length;
+      function tcMove(dir){
+        var cardW = track.children[0].offsetWidth + 20;
+        idx = Math.max(0, Math.min(idx + dir, total - 1));
+        track.scrollTo({left: idx * cardW, behavior:'smooth'});
+      }
+      window.tcMove = tcMove;
+    })();
+  </script>
 
   <!-- CO MÓWIĄ KOBIETY -->
   <section style="background:#fff;padding:60px clamp(20px,5vw,70px);">
