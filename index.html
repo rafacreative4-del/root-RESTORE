@@ -1060,10 +1060,81 @@
       /* Padding sekcji */
       section[style*="padding:70px"] { padding-top: 40px !important; padding-bottom: 40px !important; }
       h2 { line-height: 1.2 !important; }
+
+      /* ── Font sizes — 55+ minimum ── */
+      body { font-size: 17px !important; }
+      .low-stock-badge { font-size: 15px !important; }
+      .bullets li { font-size: 16px !important; }
+      .qty-name { font-size: 13px !important; }
+      .qty-sub { font-size: 13px !important; }
+      .price-tag { font-size: 22px !important; }
+
+      /* ── FAQ font sizes ── */
+      button[onclick="toggleFaq(this)"] span[style*="font-size:18px"] { font-size: 17px !important; }
+      .faq-body p { font-size: 16px !important; }
+
+      /* ── Touch targets ── */
+      .mob-gallery-btn { width: 50px !important; height: 50px !important; }
+      button[onclick="toggleFaq(this)"] { min-height: 50px !important; padding: 18px 20px !important; }
+      .btn-cta, .btn-sticky { min-height: 54px !important; font-size: 17px !important; }
+      button { min-height: 50px; }
+
+      /* ── Layout: single column grids ── */
+      div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+      div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+
+      /* ── Hero ingredient icons: 6 col → 3 col ── */
+      div[style*="grid-template-columns:repeat(6,1fr)"] { grid-template-columns: repeat(3, 1fr) !important; }
+
+      /* ── Testimonials: flex-col on mobile ── */
+      div[style*="display:flex;gap:20px;align-items:stretch"] { flex-direction: column !important; }
+
+      /* ── All sections padding ── */
+      section { padding-top: 36px !important; padding-bottom: 36px !important; }
+      section[style] { padding-left: 20px !important; padding-right: 20px !important; }
+
+      /* ── Sticky ATC ── */
+      .sticky-atc { padding: 12px 16px !important; }
+      .sticky-atc-left { gap: 8px !important; }
+      .sticky-atc-name { font-size: 15px !important; }
+      .sticky-atc-price { font-size: 17px !important; }
+      .btn-sticky { font-size: 13px !important; padding: 12px 16px !important; }
+      .sticky-atc div[style*="height:0"] { display: none !important; }
     }
+
+    /* ── Hero stacking order on tablet ── */
+    @media (max-width: 900px) {
+      .hero { flex-direction: column !important; }
+      #galleryCol { order: 1; }
+      .buy-box { order: 2; }
+    }
+
+    /* ── Accessibility: Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ── Focus visible — high contrast for 55+ ── */
+    :focus-visible {
+      outline: 3px solid #1a5276 !important;
+      outline-offset: 3px !important;
+      border-radius: 4px;
+    }
+
+    /* ── No horizontal overflow ── */
+    * { box-sizing: border-box; }
+    body { overflow-x: hidden; }
+    img { max-width: 100%; }
   </style>
 </head>
 <body>
+
+  <a href="#main-content" style="position:absolute;top:-40px;left:0;background:#1a5276;color:#fff;padding:8px 16px;z-index:10000;font-size:16px;font-weight:700;border-radius:0 0 8px 0;transition:top .2s;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Przejdź do treści</a>
 
   <!-- HEADER (brandbar — identyczny jak w quiz) -->
   <header>
@@ -1083,7 +1154,7 @@
   </div>
 
   <!-- HERO -->
-  <section>
+  <section id="main-content" role="main">
     <div class="hero">
 
       <!-- Gallery left -->
@@ -1101,10 +1172,10 @@
           <img id="gallerySlide9" src="images/Generated Image April 20, 2026 - 7_47PM.jpg" style="display:none;" />
 
           <!-- Mobile overlay: arrows + dots -->
-          <button class="mob-gallery-btn mob-gallery-prev" onclick="galleryMove(-1)">
+          <button class="mob-gallery-btn mob-gallery-prev" onclick="galleryMove(-1)" aria-label="Poprzednie zdjęcie">
             <svg viewBox="0 0 10 14" fill="none" stroke="white" stroke-width="2.5"><polyline points="8,1 2,7 8,13"/></svg>
           </button>
-          <button class="mob-gallery-btn mob-gallery-next" onclick="galleryMove(1)">
+          <button class="mob-gallery-btn mob-gallery-next" onclick="galleryMove(1)" aria-label="Następne zdjęcie">
             <svg viewBox="0 0 10 14" fill="none" stroke="white" stroke-width="2.5"><polyline points="2,1 8,7 2,13"/></svg>
           </button>
           <div class="mob-gallery-dots" id="mobGalleryDots">
@@ -2098,7 +2169,7 @@
       <div style="display:flex;flex-direction:column;gap:12px;">
 
         <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:14px;overflow:hidden;">
-          <button onclick="toggleFaq(this)" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
+          <button onclick="toggleFaq(this)" aria-expanded="false" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
             <span style="font-size:36px;flex-shrink:0;">🤔</span>
             <span style="flex:1;font-size:18px;font-weight:600;color:#1A1A1A;">"Próbowałam już wszystkiego i nic nie działało."</span>
             <span style="font-size:32px;font-weight:400;color:#1A1A1A;flex-shrink:0;transition:transform .25s;" class="faq-plus">+</span>
@@ -2109,7 +2180,7 @@
         </div>
 
         <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:14px;overflow:hidden;">
-          <button onclick="toggleFaq(this)" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
+          <button onclick="toggleFaq(this)" aria-expanded="false" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
             <span style="font-size:36px;flex-shrink:0;">🌿</span>
             <span style="flex:1;font-size:18px;font-weight:600;color:#1A1A1A;">"Mój żołądek jest wrażliwy. Czy to mnie nie podrażni?"</span>
             <span style="font-size:32px;font-weight:400;color:#1A1A1A;flex-shrink:0;transition:transform .25s;" class="faq-plus">+</span>
@@ -2120,7 +2191,7 @@
         </div>
 
         <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:14px;overflow:hidden;">
-          <button onclick="toggleFaq(this)" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
+          <button onclick="toggleFaq(this)" aria-expanded="false" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
             <span style="font-size:36px;flex-shrink:0;">⏱️</span>
             <span style="flex:1;font-size:18px;font-weight:600;color:#1A1A1A;">"Kiedy w końcu zobaczę rezultaty?"</span>
             <span style="font-size:32px;font-weight:400;color:#1A1A1A;flex-shrink:0;transition:transform .25s;" class="faq-plus">+</span>
@@ -2131,7 +2202,7 @@
         </div>
 
         <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:14px;overflow:hidden;">
-          <button onclick="toggleFaq(this)" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
+          <button onclick="toggleFaq(this)" aria-expanded="false" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
             <span style="font-size:36px;flex-shrink:0;">💊</span>
             <span style="flex:1;font-size:18px;font-weight:600;color:#1A1A1A;">"Czy to bezpieczne? Biorę leki na receptę od kardiologa/diabetologa."</span>
             <span style="font-size:32px;font-weight:400;color:#1A1A1A;flex-shrink:0;transition:transform .25s;" class="faq-plus">+</span>
@@ -2142,7 +2213,7 @@
         </div>
 
         <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:14px;overflow:hidden;">
-          <button onclick="toggleFaq(this)" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
+          <button onclick="toggleFaq(this)" aria-expanded="false" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
             <span style="font-size:36px;flex-shrink:0;">💰</span>
             <span style="flex:1;font-size:18px;font-weight:600;color:#1A1A1A;">"Dlaczego to jest droższe niż suplementy z apteki za rogiem?"</span>
             <span style="font-size:32px;font-weight:400;color:#1A1A1A;flex-shrink:0;transition:transform .25s;" class="faq-plus">+</span>
@@ -2552,7 +2623,7 @@
         <span class="sticky-atc-price" style="font-size:20px;font-weight:800;color:#1A1A1A;">273,00 zł</span>
       </div>
     </div>
-    <button class="btn-sticky">Dodaj do koszyka</button>
+    <button class="btn-sticky" aria-label="Dodaj Restore do koszyka">Dodaj do koszyka</button>
   </div>
 
   <script>
@@ -2583,9 +2654,11 @@
       // close all
       document.querySelectorAll('.faq-body').forEach(b => b.style.maxHeight = '0');
       document.querySelectorAll('.faq-plus').forEach(p => { p.textContent = '+'; });
+      document.querySelectorAll('button[onclick="toggleFaq(this)"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
       if (!isOpen) {
         body.style.maxHeight = body.scrollHeight + 'px';
         plus.textContent = '×';
+        btn.setAttribute('aria-expanded', 'true');
       }
     }
 
