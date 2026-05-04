@@ -2542,8 +2542,10 @@
   <!-- STICKY ATC -->
   <div class="sticky-atc" id="stickyAtc" style="display:none;">
     <div class="sticky-atc-left">
-      <div style="width:90px;height:90px;flex-shrink:0;background:#fff;border-radius:12px 12px 0 0;box-shadow:0 -4px 12px rgba(0,0,0,.12);align-self:flex-end;margin-bottom:12px;">
-        <img src="images/restore-main.png" style="width:100%;height:100%;object-fit:contain;" />
+      <div style="position:relative;width:90px;height:0;overflow:visible;flex-shrink:0;align-self:flex-end;margin-bottom:12px;">
+        <div style="position:absolute;bottom:0;left:0;width:90px;height:90px;background:#fff;border-radius:12px 12px 0 0;box-shadow:0 -4px 12px rgba(0,0,0,.12);">
+          <img src="images/restore-main.png" style="width:100%;height:100%;object-fit:contain;" />
+        </div>
       </div>
       <div style="display:flex;flex-direction:row;align-items:center;gap:12px;">
         <span class="sticky-atc-name" style="font-size:19px;">Restore — 15 saszetek</span>
