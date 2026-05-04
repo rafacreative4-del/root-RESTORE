@@ -2446,13 +2446,6 @@
     <div style="max-width:960px;margin:0 auto;">
 
       <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;color:#1A1A1A;text-align:center;line-height:1.1;margin-bottom:12px;text-transform:uppercase;letter-spacing:-0.5px;">Wszystko co najlepsze <span style="color:var(--accent);">z natury</span></h2>
-      <div style="text-align:center;margin-bottom:40px;">
-        <button onclick="document.getElementById('ingredientsFull').style.display=document.getElementById('ingredientsFull').style.display==='none'?'block':'none'" style="padding:12px 28px;border:1.5px solid #ccc;border-radius:40px;background:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font);color:#1A1A1A;">Pełna lista składników</button>
-        <div id="ingredientsFull" style="display:none;margin-top:16px;text-align:left;background:#f8f8f8;border-radius:12px;padding:20px 24px;font-size:15px;color:#3a3a3a;line-height:1.8;">
-          Aloes barbadensis (Aloe Vera), D-ryboza, Kurkuma długa (Curcuma longa) ekstrakt, Czarnuszka siewna (Nigella sativa) ekstrakt, Resweratrol (z Rdestowca japońskiego), Enzymy roślinne (bromelaina, papaina), Probiotyki (Lactobacillus acidophilus), Cynk, Witamina C, Witamina D3
-        </div>
-      </div>
-
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
 
         <div style="border-radius:20px;overflow:hidden;border:1px solid #ebebeb;">
@@ -2522,6 +2515,14 @@
         </div>
 
       </div>
+
+      <div style="text-align:center;margin-top:36px;">
+        <button onclick="document.getElementById('ingredientsFull').style.display=document.getElementById('ingredientsFull').style.display==='none'?'block':'none'" style="padding:12px 28px;border:1.5px solid #ccc;border-radius:40px;background:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font);color:#1A1A1A;">Pełna lista składników</button>
+        <div id="ingredientsFull" style="display:none;margin-top:16px;text-align:left;background:#f8f8f8;border-radius:12px;padding:20px 24px;font-size:15px;color:#3a3a3a;line-height:1.8;">
+          Aloes barbadensis (Aloe Vera), D-ryboza, Kurkuma długa (Curcuma longa) ekstrakt, Czarnuszka siewna (Nigella sativa) ekstrakt, Resweratrol (z Rdestowca japońskiego), Enzymy roślinne (bromelaina, papaina), Probiotyki (Lactobacillus acidophilus), Cynk, Witamina C, Witamina D3
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -2577,11 +2578,10 @@
       const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
       // close all
       document.querySelectorAll('.faq-body').forEach(b => b.style.maxHeight = '0');
-      document.querySelectorAll('.faq-plus').forEach(p => { p.textContent = '+'; p.style.transform = ''; });
+      document.querySelectorAll('.faq-plus').forEach(p => { p.textContent = '+'; });
       if (!isOpen) {
         body.style.maxHeight = body.scrollHeight + 'px';
         plus.textContent = '×';
-        plus.style.transform = 'rotate(45deg)';
       }
     }
 
