@@ -866,7 +866,7 @@
       color: var(--white);
       padding: 12px 70px;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
       z-index: 99;
       box-shadow: 0 -4px 20px rgba(0,0,0,.15);
@@ -876,7 +876,7 @@
     .sticky-atc-left {
       display: flex;
       flex-direction: row;
-      align-items: flex-end;
+      align-items: center;
       gap: 12px;
     }
 
@@ -2542,13 +2542,11 @@
   <!-- STICKY ATC -->
   <div class="sticky-atc" id="stickyAtc" style="display:none;">
     <div class="sticky-atc-left">
-      <div style="width:90px;flex-shrink:0;overflow:visible;display:flex;align-items:flex-end;justify-content:center;align-self:flex-end;">
-        <div style="width:90px;height:90px;background:#fff;border-radius:12px 12px 0 0;box-shadow:0 -4px 12px rgba(0,0,0,.12);flex-shrink:0;">
-          <img src="images/restore-main.png" style="width:100%;height:100%;object-fit:contain;" />
-        </div>
+      <div style="width:90px;height:90px;flex-shrink:0;background:#fff;border-radius:12px 12px 0 0;box-shadow:0 -4px 12px rgba(0,0,0,.12);align-self:flex-end;margin-bottom:12px;">
+        <img src="images/restore-main.png" style="width:100%;height:100%;object-fit:contain;" />
       </div>
-      <div style="display:flex;flex-direction:row;align-items:baseline;gap:12px;">
-        <span class="sticky-atc-name">Restore — 15 saszetek</span>
+      <div style="display:flex;flex-direction:row;align-items:center;gap:12px;">
+        <span class="sticky-atc-name" style="font-size:19px;">Restore — 15 saszetek</span>
         <span class="sticky-atc-price" style="font-size:20px;font-weight:800;color:#1A1A1A;">273,00 zł</span>
       </div>
     </div>
