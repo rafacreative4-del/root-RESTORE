@@ -142,6 +142,17 @@
     /* Mobile gallery overlay — ukryte na desktop */
     .mob-gallery-btn { display: none; }
     .mob-gallery-dots { display: none; }
+    /* Cena w buttonie sticky — ukryta na desktop */
+    .sticky-price-mobile { display: none; }
+    /* Badge br — na desktopie tylko spacja */
+    .badge-br { display: inline; }
+    br.mob-break { display: none; }
+
+    /* Kontrast 55+ — minimalne rozmiary i kolory */
+    [style*="font-size:10px"] { font-size: 13px !important; }
+    [style*="font-size:11px"] { font-size: 13px !important; }
+    [style*="font-size:12px"] { font-size: 14px !important; }
+    [style*="font-size:13px;font-weight:600;color:var(--navy)"] { font-size: 15px !important; }
 
     /* Buy box */
     .buy-box h1 {
@@ -211,6 +222,8 @@
       width: 20px;
       text-align: center;
     }
+    .bullet-mobile { display: none; }
+    .bullet-desktop { display: inline; }
 
     .low-stock-badge {
       display: inline-flex;
@@ -229,9 +242,11 @@
       content: '';
       width: 7px;
       height: 7px;
+      min-width: 7px;
       border-radius: 50%;
       background: var(--red);
       animation: pulse-dot 1.4s ease-in-out infinite;
+      align-self: center;
     }
     @keyframes pulse-dot {
       0%, 100% { opacity: 1; transform: scale(1); }
@@ -895,7 +910,7 @@
       color: #1A1A1A;
       font-family: 'DM Sans', sans-serif;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 900;
       letter-spacing: 1px;
       text-transform: uppercase;
       padding: 12px 32px;
@@ -970,12 +985,77 @@
       .buy-box h1 { font-size: 26px !important; }
 
       /* Bullets */
-      .bullets { padding-left: 0 !important; list-style: none !important; }
-      .bullets li { font-size: 14px !important; }
+      .bullets { padding-left: 0 !important; list-style: none !important; gap: 0 !important; }
+      .bullets li {
+        white-space: normal !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 14px !important;
+        padding: 12px 0 !important;
+        border-bottom: 1px solid #e8e4dc !important;
+      }
+      .bullets li:last-child { border-bottom: none !important; }
+      .bullets li .emoji {
+        font-size: 34px !important;
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #f0ece3 !important;
+        border-radius: 12px !important;
+        flex-shrink: 0 !important;
+        margin-top: 2px !important;
+      }
+      .bullet-desktop { display: none !important; }
+      .bullet-mobile { display: flex !important; flex-direction: column !important; gap: 5px !important; }
+      .bullet-mobile .bullet-title { font-size: 18px !important; font-weight: 800 !important; color: #1A1A1A !important; line-height: 1.25 !important; }
+      .bullet-mobile .bullet-desc { font-size: 16px !important; font-weight: 400 !important; color: #3D3D3D !important; line-height: 1.65 !important; }
+
+      /* Cena w buttonie sticky — widoczna na mobile */
+      .sticky-price-mobile { display: inline !important; }
+      /* Badge br — na mobile łamie linię */
+      .badge-br { display: block !important; height: 0; }
+
+      /* Trustpilot — 2 linie na mobile */
+      .stars-row { flex-direction: column !important; align-items: center !important; gap: 4px !important; }
+      br.mob-break { display: block !important; }
+
+      /* Jednorazowy zakup — mniejsze zdjęcie i cena na mobile */
+      .jednorazowy-img { height: 100px !important; }
+      .jednorazowy-price { font-size: 20px !important; white-space: nowrap !important; }
+
+      /* 5 zmian — zdjęcie nad tekstem na mobile */
+      .zmiana-box { flex-direction: column !important; align-items: stretch !important; }
+      .zmiana-box > div:first-child { width: 100% !important; min-width: 0 !important; height: 220px !important; }
+      .zmiana-box > div:first-child img { min-height: 220px !important; }
+
+      /* Czerwone boxy — ikona nad tekstem na mobile */
+      .czerwony-box { flex-direction: column !important; gap: 10px !important; }
+      /* Wyniki box — ikona nad nagłówkiem na mobile */
+      .wyniki-box { flex-direction: column !important; gap: 8px !important; }
+      .wyniki-icon { font-size: 36px !important; }
+
+      /* Idealny dla Ciebie — zdjęcie na górze, tekst pod spodem */
+      .idealny-layout { flex-direction: column !important; gap: 24px !important; }
+      .idealny-layout > div:first-child { flex: none !important; max-width: 100% !important; width: 100% !important; }
+
+      /* "Życie jest lepsze" — 3 boxy w rzędzie na mobile */
+      .life-box-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; }
+      .life-box {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 12px 6px !important;
+        gap: 6px !important;
+      }
+      .life-box .life-emoji { font-size: 30px !important; }
+      .life-box-text { font-size: 13px !important; }
 
       /* Low stock badge — nie ucina tekstu */
       .low-stock-badge {
-        display: flex !important;
+        display: block !important;
         white-space: normal !important;
         width: 100% !important;
         box-sizing: border-box !important;
@@ -1002,35 +1082,48 @@
         white-space: nowrap !important;
       }
 
+      /* Hero banner — ukryty na mobile */
+      .hero-banner-desktop { display: none !important; }
+      .hero-banner-mobile { display: block !important; }
+
+      /* Karuzela mobile — tylko slajdy 0-2 */
+      #gallerySlide3, #gallerySlide4, #gallerySlide5, #gallerySlide6, #gallerySlide7, #gallerySlide8, #gallerySlide9, #gallerySlide10 { display: none !important; }
+
+
       /* Galeria — nie sticky */
       #galleryCol { position: static !important; }
       .gallery-nav { display: none !important; }
 
-      /* Strzałki + kropki na zdjęciu */
+      /* Strzałki na zdjęciu */
       .mob-gallery-btn {
         display: flex !important;
         position: absolute;
         top: 50%; transform: translateY(-50%);
-        width: 36px; height: 36px;
+        width: 28px; height: 28px;
         border-radius: 50%;
-        background: rgba(0,0,0,.45);
+        background: transparent;
         border: none; cursor: pointer;
         align-items: center; justify-content: center;
         z-index: 10;
       }
-      .mob-gallery-prev { left: 10px; }
-      .mob-gallery-next { right: 10px; }
+      .mob-gallery-btn svg { width: 7px; height: 11px; filter: drop-shadow(0 1px 2px rgba(0,0,0,.5)); }
+      .mob-gallery-prev { left: 8px; }
+      .mob-gallery-next { right: 8px; }
+      /* Kropki pod zdjęciem */
       .mob-gallery-dots {
         display: flex !important;
-        position: absolute; bottom: 10px;
-        left: 50%; transform: translateX(-50%);
-        gap: 6px; z-index: 10;
+        position: static;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 10px;
       }
-      .mob-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.55); cursor: pointer; }
-      .mob-dot.active { background: #fff; }
+      .mob-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; cursor: pointer; }
+      .mob-dot.active { background: #1A1A1A; }
+      /* Siatka thumbnailów schowana na mobile */
+      .gallery-thumbs { display: none !important; }
 
       /* Logo */
-      header img { height: 48px !important; }
+      header img { height: 64px !important; }
 
       /* Hero banner */
       div[style*="height:400px"] { height: 220px !important; }
@@ -1074,7 +1167,7 @@
       .faq-body p { font-size: 16px !important; }
 
       /* ── Touch targets ── */
-      .mob-gallery-btn { width: 50px !important; height: 50px !important; }
+      .mob-gallery-btn { width: 28px !important; height: 28px !important; }
       button[onclick="toggleFaq(this)"] { min-height: 50px !important; padding: 18px 20px !important; }
       .btn-cta, .btn-sticky { min-height: 54px !important; font-size: 17px !important; }
       button { min-height: 50px; }
@@ -1095,11 +1188,8 @@
 
       /* ── Sticky ATC ── */
       .sticky-atc { padding: 12px 16px !important; }
-      .sticky-atc-left { gap: 8px !important; }
-      .sticky-atc-name { font-size: 15px !important; }
-      .sticky-atc-price { font-size: 17px !important; }
-      .btn-sticky { font-size: 13px !important; padding: 12px 16px !important; }
-      .sticky-atc div[style*="height:0"] { display: none !important; }
+      .sticky-atc-left { display: none !important; }
+      .btn-sticky { flex: 1 !important; font-size: 16px !important; padding: 14px !important; }
     }
 
     /* ── Hero stacking order on tablet ── */
@@ -1138,17 +1228,29 @@
 
   <!-- HEADER (brandbar — identyczny jak w quiz) -->
   <header>
-    <img src="images/Root-Logo-Black-280x280.png" alt="Root Brands" style="height:80px;width:auto;display:block;" />
+    <img src="images/Root-Logo-Black-280x280.webp" alt="Root Brands" style="height:80px;width:auto;display:block;" />
   </header>
 
   <!-- HERO BANNER -->
-  <div style="width:100%;height:400px;background:#d0d0d0;position:relative;overflow:hidden;">
+  <div class="hero-banner-desktop" style="width:100%;height:400px;background:#d0d0d0;position:relative;overflow:hidden;">
+    <img src="images/frame-235.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;" />
     <div style="position:absolute;inset:0;display:flex;align-items:center;">
       <div style="width:100%;max-width:1300px;margin:0 auto;padding:0 70px;box-sizing:border-box;">
         <div style="max-width:560px;">
           <h1 style="font-size:clamp(26px,3.5vw,48px);font-weight:800;color:#1A1A1A;line-height:1.15;margin-bottom:12px;">Zasługujesz na swoje najlepsze chwile.</h1>
           <h3 style="font-size:clamp(15px,1.6vw,20px);font-weight:500;color:#3A3A3A;line-height:1.5;">Zadbaj o siebie — dla siebie i dla tych, których kochasz.</h3>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO BANNER MOBILE -->
+  <div class="hero-banner-mobile" style="display:none;width:100%;height:260px;position:relative;overflow:hidden;">
+    <img src="images/frame-235.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;" />
+    <div style="position:absolute;inset:0;background:rgba(255,255,255,0.45);display:flex;align-items:center;padding:0 24px;">
+      <div>
+        <h1 style="font-size:27px;font-weight:800;color:#1A1A1A;line-height:1.2;margin-bottom:8px;">Zasługujesz na swoje najlepsze chwile.</h1>
+        <p style="font-size:18px;font-weight:500;color:#3A3A3A;line-height:1.5;margin:0;">Zadbaj o siebie — dla siebie i dla tych, których kochasz.</p>
       </div>
     </div>
   </div>
@@ -1161,41 +1263,33 @@
       <div id="galleryCol" style="min-width:0;align-self:flex-start;position:sticky;top:20px;">
         <div class="gallery-main" id="galleryMain">
           <img id="gallerySlide0" src="images/Gemini_Generated_Image_o8xg2eo8xg2eo8xg_cleanup.webp" style="display:block;" />
-          <img id="gallerySlide1" src="images/restore2.png" style="display:none;" />
-          <img id="gallerySlide2" src="images/Generated Image April 20, 2026 - 4_22PM.jpg" style="display:none;" />
-          <img id="gallerySlide3" src="images/Generated Image April 20, 2026 - 4_31PM.jpg" style="display:none;" />
-          <img id="gallerySlide4" src="images/Generated Image April 20, 2026 - 5_32PM.jpg" style="display:none;" />
-          <img id="gallerySlide5" src="images/Generated Image April 20, 2026 - 7_16PM.jpg" style="display:none;" />
-          <img id="gallerySlide6" src="images/Generated Image April 20, 2026 - 7_30PM.jpg" style="display:none;" />
-          <img id="gallerySlide7" src="images/Generated Image April 20, 2026 - 7_35PM.jpg" style="display:none;" />
-          <img id="gallerySlide8" src="images/Generated Image April 20, 2026 - 7_39PM.jpg" style="display:none;" />
-          <img id="gallerySlide9" src="images/Generated Image April 20, 2026 - 7_47PM.jpg" style="display:none;" />
+          <img id="gallerySlide1" src="images/restore3.webp" style="display:none;" />
+          <img id="gallerySlide2" src="images/Restore2.webp" style="display:none;" />
+          <img id="gallerySlide3" src="images/Gemini_Generated_Image_9rrhdu9rrhdu9rrh.webp" style="display:none;" />
+          <img id="gallerySlide4" src="images/Generated Image April 20, 2026 - 4_31PM.webp" style="display:none;" />
+          <img id="gallerySlide5" src="images/Generated Image April 20, 2026 - 5_32PM.webp" style="display:none;" />
+          <img id="gallerySlide6" src="images/Generated Image April 20, 2026 - 7_16PM.webp" style="display:none;" />
+          <img id="gallerySlide7" src="images/Generated Image April 20, 2026 - 7_30PM.webp" style="display:none;" />
+          <img id="gallerySlide8" src="images/Generated Image April 20, 2026 - 7_35PM.webp" style="display:none;" />
+          <img id="gallerySlide9" src="images/Generated Image April 20, 2026 - 7_39PM.webp" style="display:none;" />
+          <img id="gallerySlide10" src="images/Generated Image April 20, 2026 - 7_47PM.webp" style="display:none;" />
 
           <!-- Mobile overlay: arrows + dots -->
           <button class="mob-gallery-btn mob-gallery-prev" onclick="galleryMove(-1)" aria-label="Poprzednie zdjęcie">
-            <svg viewBox="0 0 10 14" fill="none" stroke="white" stroke-width="2.5"><polyline points="8,1 2,7 8,13"/></svg>
+            <svg viewBox="0 0 6 10" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,1 1,5 5,9"/></svg>
           </button>
           <button class="mob-gallery-btn mob-gallery-next" onclick="galleryMove(1)" aria-label="Następne zdjęcie">
-            <svg viewBox="0 0 10 14" fill="none" stroke="white" stroke-width="2.5"><polyline points="2,1 8,7 2,13"/></svg>
+            <svg viewBox="0 0 6 10" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,1 5,5 1,9"/></svg>
           </button>
-          <div class="mob-gallery-dots" id="mobGalleryDots">
+        </div>
+        <div class="mob-gallery-dots" id="mobGalleryDots">
             <span class="mob-dot active" onclick="galleryGoto(0)"></span>
             <span class="mob-dot" onclick="galleryGoto(1)"></span>
             <span class="mob-dot" onclick="galleryGoto(2)"></span>
-            <span class="mob-dot" onclick="galleryGoto(3)"></span>
-            <span class="mob-dot" onclick="galleryGoto(4)"></span>
-            <span class="mob-dot" onclick="galleryGoto(5)"></span>
-            <span class="mob-dot" onclick="galleryGoto(6)"></span>
-            <span class="mob-dot" onclick="galleryGoto(7)"></span>
-            <span class="mob-dot" onclick="galleryGoto(8)"></span>
-            <span class="mob-dot" onclick="galleryGoto(9)"></span>
-          </div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
-          <div style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--gray-100);"><img src="images/restore2.png" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-          <div style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--gray-100);"><img src="images/Generated Image April 20, 2026 - 4_22PM.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-          <div style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--gray-100);"><img src="images/Generated Image April 20, 2026 - 4_31PM.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-          <div style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--gray-100);"><img src="images/Generated Image April 20, 2026 - 5_32PM.jpg" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+        <div class="gallery-thumbs" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+          <div style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--gray-100);"><img src="images/Restore2.webp" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+          <div style="aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--gray-100);"><img src="images/restore3.webp" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
         </div>
       </div>
 
@@ -1211,65 +1305,65 @@
             <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <span class="rating-text">4,6 · 2 236 opinii</span>
+          <span class="rating-text">4,6 · 2 236 opinii na Trustpilot</span>
         </a>
 
         <p style="font-size:20px;font-weight:600;color:var(--gray-800);margin:0 0 16px;text-transform:uppercase;letter-spacing:0.05em;">Uczucie lekkości prosto z natury</p>
 
         <ul class="bullets">
-          <li><span class="emoji">🌿</span> Harmonia jelit — <span style="font-weight:500;">wspiera naturalną regenerację i równowagę mikrobiomu.</span></li>
-          <li><span class="emoji">🧠</span> Jasność umysłu — <span style="font-weight:500;">zdrowa oś jelitowo-mózgowa oddala codzienne znużenie.</span></li>
-          <li><span class="emoji">🍃</span> Komfort trawienny — <span style="font-weight:500;">roślinne esencje ułatwiają trawienie bez uczucia ciężkości.</span></li>
-          <li><span class="emoji">⚡</span> Szybka energia — <span style="font-weight:500;">wysoka wchłanialność nie obciąża układu pokarmowego.</span></li>
-          <li><span class="emoji">🛡️</span> Naturalna ochrona — <span style="font-weight:500;">dba o szczelną barierę jelitową i chroni komórki przed stresem.</span></li>
+          <li><span class="emoji">🌿</span><span class="bullet-desktop"> Harmonia jelit — <span style="font-weight:500;">wspiera naturalną regenerację i równowagę mikrobiomu.</span></span><span class="bullet-mobile"><strong class="bullet-title">Harmonia jelit</strong><span class="bullet-desc">wspiera naturalną regenerację i równowagę mikrobiomu.</span></span></li>
+          <li><span class="emoji">🧠</span><span class="bullet-desktop"> Jasność umysłu — <span style="font-weight:500;">zdrowa oś jelitowo-mózgowa oddala codzienne znużenie.</span></span><span class="bullet-mobile"><strong class="bullet-title">Jasność umysłu</strong><span class="bullet-desc">zdrowa oś jelitowo-mózgowa oddala codzienne znużenie.</span></span></li>
+          <li><span class="emoji">🍃</span><span class="bullet-desktop"> Komfort trawienny — <span style="font-weight:500;">roślinne esencje ułatwiają trawienie bez uczucia ciężkości.</span></span><span class="bullet-mobile"><strong class="bullet-title">Komfort trawienny</strong><span class="bullet-desc">roślinne esencje ułatwiają trawienie bez uczucia ciężkości.</span></span></li>
+          <li><span class="emoji">⚡</span><span class="bullet-desktop"> Szybka energia — <span style="font-weight:500;">wysoka wchłanialność nie obciąża układu pokarmowego.</span></span><span class="bullet-mobile"><strong class="bullet-title">Szybka energia</strong><span class="bullet-desc">wysoka wchłanialność nie obciąża układu pokarmowego.</span></span></li>
+          <li><span class="emoji">🛡️</span><span class="bullet-desktop"> Naturalna ochrona — <span style="font-weight:500;">dba o szczelną barierę jelitową i chroni komórki przed stresem.</span></span><span class="bullet-mobile"><strong class="bullet-title">Naturalna ochrona</strong><span class="bullet-desc">dba o szczelną barierę jelitową i chroni komórki przed stresem.</span></span></li>
         </ul>
 
         <div style="margin-bottom:20px;">
-          <p style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-600);margin:0 0 12px;">Życie jest lepsze gdy masz</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-            <div style="background:var(--gray-100);border-radius:12px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:15px;font-weight:500;color:var(--gray-800);text-align:center;">
-              <span style="font-size:48px;">🥗</span>Spokój po posiłku
+          <p style="font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-600);margin:0 0 12px;">Życie jest lepsze gdy masz</p>
+          <div class="life-box-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+            <div class="life-box" style="background:var(--gray-100);border-radius:12px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;font-weight:500;color:var(--gray-800);text-align:center;">
+              <span class="life-emoji" style="font-size:48px;">🥗</span><span class="life-box-text" style="font-size:15px;">Spokój po posiłku</span>
             </div>
-            <div style="background:var(--gray-100);border-radius:12px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:15px;font-weight:500;color:var(--gray-800);text-align:center;">
-              <span style="font-size:48px;">🌻</span>Popołudnia pełne sił
+            <div class="life-box" style="background:var(--gray-100);border-radius:12px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;font-weight:500;color:var(--gray-800);text-align:center;">
+              <span class="life-emoji" style="font-size:48px;">🌻</span><span class="life-box-text" style="font-size:15px;">Popołudnia pełne sił</span>
             </div>
-            <div style="background:var(--gray-100);border-radius:12px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:15px;font-weight:500;color:var(--gray-800);text-align:center;">
-              <span style="font-size:48px;">🚶‍♀️</span>Swobodny, lekki krok
+            <div class="life-box" style="background:var(--gray-100);border-radius:12px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;font-weight:500;color:var(--gray-800);text-align:center;">
+              <span class="life-emoji" style="font-size:48px;">🚶‍♀️</span><span class="life-box-text" style="font-size:15px;">Swobodny, lekki krok</span>
             </div>
           </div>
         </div>
 
         <div style="margin-bottom:24px;">
-          <p style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-600);margin:0 0 12px;">Główne składniki aktywne</p>
+          <p style="font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-600);margin:0 0 12px;">Główne składniki aktywne</p>
           <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;text-align:center;">
             <div>
-              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Kurkuma.png" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Kurkuma</span>
+              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Kurkuma.webp" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+              <span style="font-size:14px;font-weight:700;color:var(--gray-800);">Kurkuma</span>
             </div>
             <div>
-              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Aloes.png" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Aloes</span>
+              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Aloes.webp" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+              <span style="font-size:14px;font-weight:700;color:var(--gray-800);">Aloes</span>
             </div>
             <div>
-              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Czarnuszka.png" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Czarnuszka</span>
+              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Czarnuszka.webp" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+              <span style="font-size:14px;font-weight:700;color:var(--gray-800);">Czarnuszka</span>
             </div>
             <div>
-              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Maliny.png" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Maliny</span>
+              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Maliny.webp" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+              <span style="font-size:14px;font-weight:700;color:var(--gray-800);">Maliny</span>
             </div>
             <div>
-              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/ocet_jabłkowy.png" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Ocet jabłkowy</span>
+              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/ocet_jabłkowy.webp" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+              <span style="font-size:14px;font-weight:700;color:var(--gray-800);">Ocet jabłkowy</span>
             </div>
             <div>
-              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Resweratrol.png" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-              <span style="font-size:13px;font-weight:700;color:var(--gray-800);">Resweratrol</span>
+              <div style="width:64px;height:64px;border-radius:50%;background:var(--gray-100);margin:0 auto 8px;overflow:hidden;"><img src="images/Resweratrol.webp" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+              <span style="font-size:14px;font-weight:700;color:var(--gray-800);">Resweratrol</span>
             </div>
           </div>
         </div>
 
-        <div class="low-stock-badge">Ogromne zainteresowanie! Dołączyło już setki kobiet z całej Polski</div>
+        <div class="low-stock-badge">Ogromne zainteresowanie!<span class="badge-br"> </span>Dołączyło już setki kobiet z całej Polski</div>
 
         <div style="border:2px solid #1A1A1A;border-radius:16px;padding:20px;margin-bottom:16px;">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
@@ -1277,8 +1371,8 @@
             <span style="font-size:20px;font-weight:700;color:#1A1A1A;">Jednorazowy zakup</span>
           </div>
           <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:8px;">
-            <img src="images/restore-main.png" alt="RESTORE saszetki" style="height:140px;width:auto;object-fit:contain;" />
-            <span style="font-size:28px;font-weight:700;color:#1A1A1A;">273,00 zł/ 15szt.</span>
+            <img src="images/restore-main.webp" alt="RESTORE saszetki" class="jednorazowy-img" style="height:140px;width:auto;object-fit:contain;" />
+            <span class="jednorazowy-price" style="font-size:28px;font-weight:700;color:#1A1A1A;">273,00 zł / 15szt.</span>
           </div>
           <button class="btn-cta" style="margin:0;">Dodaj do koszyka</button>
         </div>
@@ -1287,22 +1381,22 @@
         <!-- Płatności -->
         <div style="border:2px solid var(--border);border-radius:12px;margin-bottom:16px;overflow:hidden;">
           <div style="padding:16px 20px;display:flex;align-items:center;justify-content:space-around;gap:16px;flex-wrap:wrap;">
-            <img src="images/Visa_Brandmark_Blue_RGB.png" alt="Visa" style="height:18px;width:auto;" />
+            <img src="images/Visa_Brandmark_Blue_RGB.webp" alt="Visa" style="height:18px;width:auto;" />
             <img src="images/Mastercard_2019_logo.svg" alt="Mastercard" style="height:22px;width:auto;" />
-            <img src="images/paypal-logo.png" alt="PayPal" style="height:18px;width:auto;" />
-            <img src="images/googlepay-logo.png" alt="Google Pay" style="height:18px;width:auto;" />
+            <img src="images/paypal-logo.webp" alt="PayPal" style="height:18px;width:auto;" />
+            <img src="images/googlepay-logo.webp" alt="Google Pay" style="height:18px;width:auto;" />
           </div>
           <div style="border-top:2px solid var(--border);padding:8px 20px;display:flex;align-items:center;justify-content:center;gap:12px;">
             <div style="width:44px;height:44px;border-radius:50%;background:var(--gray-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
               <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--gray-800)" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
             </div>
-            <span style="font-size:16px;font-weight:500;color:var(--gray-800);">Dostawa do Polski: <strong>37 zł</strong></span>
+            <span style="font-size:16px;font-weight:500;color:var(--gray-800);">Dostawa: <strong>37 zł</strong></span>
           </div>
         </div>
 
         <div style="width:100%;display:block;background:var(--gray-100);border-radius:8px;padding:18px 20px;margin-bottom:16px;">
           <div style="display:flex;gap:20px;align-items:center;margin-bottom:14px;">
-            <img src="images/avatar.png" alt="" style="width:100px;height:100px;border-radius:8px;object-fit:cover;flex-shrink:0;" />
+            <img src="images/avatar.webp" alt="" style="width:100px;height:100px;border-radius:8px;object-fit:cover;flex-shrink:0;" />
             <div>
               <div style="font-size:19px;font-weight:600;color:var(--gray-800);">dr. Christina Rahm</div>
               <div style="font-size:17px;color:var(--gray-800);">biotechnolog i naukowiec farmaceutyczny</div>
@@ -1315,13 +1409,13 @@
 
         <div class="trust-badges">
           <div class="trust-item">
-            <img src="images/BEZ_GLUTENU.png" alt="Bez glutenu" style="width:100px;height:100px;object-fit:contain;" />
+            <img src="images/BEZ_GLUTENU.webp" alt="Bez glutenu" style="width:100px;height:100px;object-fit:contain;" />
           </div>
           <div class="trust-item">
-            <img src="images/BEZ_GMO.png" alt="Bez GMO" style="width:100px;height:100px;object-fit:contain;" />
+            <img src="images/BEZ_GMO.webp" alt="Bez GMO" style="width:100px;height:100px;object-fit:contain;" />
           </div>
           <div class="trust-item">
-            <img src="images/Produkt_z_USA.png" alt="Produkt z USA" style="width:100px;height:100px;object-fit:contain;" />
+            <img src="images/Produkt_z_USA.webp" alt="Produkt z USA" style="width:100px;height:100px;object-fit:contain;" />
           </div>
         </div>
 
@@ -1348,7 +1442,7 @@
               <span class="accordion-plus">+</span>
             </button>
             <div class="accordion-body">
-              <img src="images/informacje-zywieniowe.png" alt="Informacje żywieniowe" style="max-width:70%;height:auto;display:block;border-radius:8px;margin:0 auto;" />
+              <img src="images/informacje-zywieniowe.webp" alt="Informacje żywieniowe" style="max-width:70%;height:auto;display:block;border-radius:8px;margin:0 auto;" />
             </div>
           </div>
           <div class="accordion-item">
@@ -1384,7 +1478,7 @@
               <span class="accordion-plus">+</span>
             </button>
             <div class="accordion-body" style="font-size:17px;">
-              Zamówienia wysyłane w ciągu <strong>1–2 dni</strong> roboczych. Dostawa do Polski w <strong>3–5 dni</strong>.
+              Zamówienia wysyłane w ciągu <strong>1–2 dni</strong> roboczych. Dostawa w <strong>3–5 dni</strong>.
             </div>
           </div>
         </div>
@@ -1398,7 +1492,7 @@
     <div style="max-width:1100px;margin:0 auto;">
       <!-- Header -->
       <h2 style="text-align:center;font-size:clamp(26px,4vw,42px);font-weight:800;color:#1A1A1A;margin-bottom:16px;">
-        <span style="color:#1A1A1A;">Co </span><span style="color:var(--navy);">mówią osoby</span><span style="color:#1A1A1A;"> o Restore?</span>
+        <span style="color:#1A1A1A;">Co </span><span style="color:var(--navy);">mówią osoby</span><br class="mob-break"><span style="color:#1A1A1A;"> o Restore?</span>
       </h2>
 
       <a href="https://www.trustpilot.com/review/therootbrands.com" target="_blank" rel="noopener" class="stars-row" style="text-decoration:none;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;">
@@ -1416,8 +1510,8 @@
       <div style="display:flex;gap:20px;align-items:stretch;">
 
           <!-- Card 1 -->
-          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:1;min-width:0;">
-            <div style="width:100%;aspect-ratio:4/3;background:#d0d0d0;overflow:hidden;"><img src="images/review2.png" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+          <div style="background:#fff;border:1.5px solid #999;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:1;min-width:0;">
+            <div style="width:100%;aspect-ratio:4/3;background:#d0d0d0;overflow:hidden;"><img src="images/review2.webp" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
             <div style="padding:0 24px 28px;display:flex;flex-direction:column;gap:14px;">
             <div style="display:flex;gap:4px;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1427,15 +1521,15 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
             <p style="font-size:17px;color:#2a2a2a;text-align:left;line-height:1.7;">Przygoda z ROOT przyniosła mi wiele korzyści: więcej energii, lepszy sen, a żołądek przestał mi dokuczać. Restore to dla mnie naukowa perfekcja w saszetce i razem z pozostałymi produktami działa na mnie niesamowicie. Opowiedziałam o waszych produktach wszystkim znajomym i zawsze podkreślam też błyskawiczną dostawę.</p>
-            <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #f0f0f0;">
+            <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #bbb;">
               <strong style="font-size:14px;color:var(--navy);">Sylwia J.</strong>
             </div>
             </div>
           </div>
 
           <!-- Card 2 -->
-          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:1;min-width:0;">
-            <div style="width:100%;aspect-ratio:4/3;background:#d0d0d0;overflow:hidden;"><img src="images/review1.png" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+          <div style="background:#fff;border:1.5px solid #999;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:1;min-width:0;">
+            <div style="width:100%;aspect-ratio:4/3;background:#d0d0d0;overflow:hidden;"><img src="images/review1.webp" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
             <div style="padding:0 24px 28px;display:flex;flex-direction:column;gap:14px;">
             <div style="display:flex;gap:4px;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1445,15 +1539,15 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
             <p style="font-size:17px;color:#2a2a2a;text-align:left;line-height:1.7;">Stosuję RESTORE. Od razu poczułam pozytywne efekty. Przede wszystkim poziom energii jest wysoki i stabilny przez cały dzień, żadnych spadków. Dodatkowo problemy z jelitami po prostu zniknęły. Produkt najwyższej jakości. Niedługo będę odkrywać kolejne produkty. Dziękuję.</p>
-            <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #f0f0f0;">
+            <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #bbb;">
               <strong style="font-size:14px;color:var(--navy);">Władysława K.</strong>
             </div>
             </div>
           </div>
 
           <!-- Card 3 -->
-          <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:1;min-width:0;">
-            <div style="width:100%;aspect-ratio:4/3;background:#d0d0d0;overflow:hidden;"><img src="images/review3_cleanup.png" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+          <div style="background:#fff;border:1.5px solid #999;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;gap:14px;flex:1;min-width:0;">
+            <div style="width:100%;aspect-ratio:4/3;background:#d0d0d0;overflow:hidden;"><img src="images/review3_cleanup.webp" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
             <div style="padding:0 24px 28px;display:flex;flex-direction:column;gap:14px;">
             <div style="display:flex;gap:4px;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1463,7 +1557,7 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#3aaa7a" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
             <p style="font-size:17px;color:#2a2a2a;text-align:left;line-height:1.7;">Mój mąż i ja mamy po sześćdziesiąt kilka lat. Od roku stosujemy Restore i inne produkty. Czujemy się teraz lepiej niż w młodszych latach. Dziękujemy za wspaniałe produkty, które naprawdę pomagają.</p>
-            <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #f0f0f0;">
+            <div style="display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px;border-top:1px solid #bbb;">
               <strong style="font-size:14px;color:var(--navy);">Elżbieta K.</strong>
             </div>
             </div>
@@ -1479,11 +1573,11 @@
       <p style="text-align:center;font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);margin-bottom:12px;">Dobro natury zamknięte w każdej saszetce</p>
       <h2 style="text-align:center;font-size:clamp(28px,4vw,52px);font-weight:800;color:#1A1A1A;margin-bottom:48px;line-height:1.15;">Idealny dla Ciebie <span style="color:#c0392b;">jeśli:</span></h2>
 
-      <div style="display:flex;align-items:center;justify-content:center;gap:60px;">
+      <div class="idealny-layout" style="display:flex;align-items:center;justify-content:center;gap:60px;">
 
         <!-- Image -->
         <div style="flex:0 0 420px;max-width:420px;display:flex;justify-content:center;">
-          <img src="images/restore-main.png" alt="Restore" style="width:100%;height:auto;display:block;">
+          <img src="images/restore-main.webp" alt="Restore" style="width:100%;height:auto;display:block;">
         </div>
 
         <!-- List -->
@@ -1493,7 +1587,7 @@
             <div style="width:4px;flex-shrink:0;border-radius:4px;background:#c0392b;align-self:stretch;"></div>
             <div>
               <div style="font-size:clamp(17px,1.6vw,20px);font-weight:700;color:#1A1A1A;margin-bottom:5px;">Po jedzeniu męczy Cię wzdęty brzuch i palący dyskomfort</div>
-              <p style="font-size:15px;color:#555;line-height:1.6;margin:0;">a ulubione dania kończą się uczuciem „cofania" i ciężkości. Szukasz łagodnego, roślinnego ukojenia dla żołądka.</p>
+              <p style="font-size:15px;color:#3D3D3D;line-height:1.6;margin:0;">a ulubione dania kończą się uczuciem „cofania" i ciężkości. Szukasz łagodnego, roślinnego ukojenia dla żołądka.</p>
             </div>
           </div>
 
@@ -1501,7 +1595,7 @@
             <div style="width:4px;flex-shrink:0;border-radius:4px;background:#e07020;align-self:stretch;"></div>
             <div>
               <div style="font-size:clamp(17px,1.6vw,20px);font-weight:700;color:#1A1A1A;margin-bottom:5px;">Około 14:00 całkowicie opadasz z sił i tracisz ostrość umysłu</div>
-              <p style="font-size:15px;color:#555;line-height:1.6;margin:0;">a codzienne znużenie zmusza Cię do drzemki. Pragniesz odzyskać stabilną energię bez ratowania się kolejną kawą.</p>
+              <p style="font-size:15px;color:#3D3D3D;line-height:1.6;margin:0;">a codzienne znużenie zmusza Cię do drzemki. Pragniesz odzyskać stabilną energię bez ratowania się kolejną kawą.</p>
             </div>
           </div>
 
@@ -1509,7 +1603,7 @@
             <div style="width:4px;flex-shrink:0;border-radius:4px;background:#d4a800;align-self:stretch;"></div>
             <div>
               <div style="font-size:clamp(17px,1.6vw,20px);font-weight:700;color:#1A1A1A;margin-bottom:5px;">Poranki witają Cię zesztywniałym, „opornym" ciałem</div>
-              <p style="font-size:15px;color:#555;line-height:1.6;margin:0;">przez co zwykłe domowe czynności sprawiają trudność, a Ty po prostu chcesz odzyskać dawną swobodę ruchu.</p>
+              <p style="font-size:15px;color:#3D3D3D;line-height:1.6;margin:0;">przez co zwykłe domowe czynności sprawiają trudność, a Ty po prostu chcesz odzyskać dawną swobodę ruchu.</p>
             </div>
           </div>
 
@@ -1517,7 +1611,7 @@
             <div style="width:4px;flex-shrink:0;border-radius:4px;background:#f5c200;align-self:stretch;"></div>
             <div>
               <div style="font-size:clamp(17px,1.6vw,20px);font-weight:700;color:#1A1A1A;margin-bottom:5px;">Twój układ trawienny źle znosi garście twardych tabletek</div>
-              <p style="font-size:15px;color:#555;line-height:1.6;margin:0;">i szukasz bezpiecznej, płynnej natury, która wchłania się błyskawicznie, dając wsparcie bez podrażniania śluzówki.</p>
+              <p style="font-size:15px;color:#3D3D3D;line-height:1.6;margin:0;">i szukasz bezpiecznej, płynnej natury, która wchłania się błyskawicznie, dając wsparcie bez podrażniania śluzówki.</p>
             </div>
           </div>
 
@@ -1539,15 +1633,15 @@
     <div class="ugc-grid" style="max-width:1300px;margin:0 auto;padding:0 clamp(20px,5vw,70px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.5vw,24px);">
       <div style="position:relative;">
         <video src="Character_shows_product_202604201555.mp4" style="border-radius:12px;aspect-ratio:9/16;width:100%;object-fit:cover;display:block;" autoplay playsinline muted loop></video>
-        <p style="position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:10px;color:rgba(255,255,255,.92);margin:0;pointer-events:none;">Zdjęcia mają charakter wyłącznie poglądowy</p>
+        <p style="position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:13px;color:rgba(255,255,255,.92);margin:0;pointer-events:none;">Zdjęcia mają charakter wyłącznie poglądowy</p>
       </div>
       <div style="position:relative;">
         <video src="Character_smiles_says_202604201649.mp4" style="border-radius:12px;aspect-ratio:9/16;width:100%;object-fit:cover;display:block;" autoplay playsinline muted loop></video>
-        <p style="position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:10px;color:rgba(255,255,255,.92);margin:0;pointer-events:none;">Zdjęcia mają charakter wyłącznie poglądowy</p>
+        <p style="position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:13px;color:rgba(255,255,255,.92);margin:0;pointer-events:none;">Zdjęcia mają charakter wyłącznie poglądowy</p>
       </div>
       <div style="position:relative;">
         <video src="Character_smiles_at_202604201751.mp4" style="border-radius:12px;aspect-ratio:9/16;width:100%;object-fit:cover;display:block;" autoplay playsinline muted loop></video>
-        <p style="position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:10px;color:rgba(255,255,255,.92);margin:0;pointer-events:none;">Zdjęcia mają charakter wyłącznie poglądowy</p>
+        <p style="position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:13px;color:rgba(255,255,255,.92);margin:0;pointer-events:none;">Zdjęcia mają charakter wyłącznie poglądowy</p>
       </div>
     </div>
 
@@ -1599,7 +1693,7 @@
 
             <div style="flex:1;display:flex;flex-direction:column;gap:0;min-width:0;">
               <div style="border-radius:12px 12px 0 0;aspect-ratio:1/1;width:100%;overflow:hidden;background:#f5f0e6;">
-                <img src="images/Restore.png" alt="Restore" style="width:100%;height:100%;object-fit:contain;display:block;padding:12px;box-sizing:border-box;" />
+                <img src="images/Restore.webp" alt="Restore" style="width:100%;height:100%;object-fit:contain;display:block;padding:12px;box-sizing:border-box;" />
               </div>
               <div style="background:#ffffff;border:1.5px solid #e8e4dc;border-top:none;border-radius:0 0 12px 12px;padding:18px 16px;text-align:left;box-shadow:0 4px 16px rgba(0,0,0,0.07);flex:1;">
                 <div style="font-size:17px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#b8922a;margin-bottom:6px;">Zaawansowane wsparcie</div>
@@ -1630,7 +1724,7 @@
   <section style="display:none;">
     <div style="max-width:900px;margin:0 auto;">
 
-      <div style="font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.65);text-align:center;margin-bottom:16px;">Prawdziwe efekty</div>
+      <div style="font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#3D3D3D;text-align:center;margin-bottom:16px;">Prawdziwe efekty</div>
       <h2 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:#1A1A1A;text-align:center;margin-bottom:28px;line-height:1.15;">Prawie się poddała.<br>Potem to się stało.</h2>
 
       <!-- Before/After photos -->
@@ -1639,7 +1733,7 @@
 
           <!-- Left: before -->
           <div style="position:relative;">
-            <img src="images/Generated Image April 20, 2026 - 7_16PM.jpg" alt="Dzień 1" style="aspect-ratio:9/16;max-height:420px;width:100%;object-fit:cover;display:block;" />
+            <img src="images/Generated Image April 20, 2026 - 7_16PM.webp" alt="Dzień 1" style="aspect-ratio:9/16;max-height:420px;width:100%;object-fit:cover;display:block;" />
             <!-- Dzień 1 badge -->
             <div style="position:absolute;bottom:52px;right:12px;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;">Dzień 1</div>
             <!-- Przed bar -->
@@ -1648,7 +1742,7 @@
 
           <!-- Right: after -->
           <div style="position:relative;border-left:2px solid #d4c9a8;">
-            <img src="images/Generated Image April 20, 2026 - 7_47PM.jpg" alt="Dzień 47" style="aspect-ratio:9/16;max-height:420px;width:100%;object-fit:cover;display:block;" />
+            <img src="images/Generated Image April 20, 2026 - 7_47PM.webp" alt="Dzień 47" style="aspect-ratio:9/16;max-height:420px;width:100%;object-fit:cover;display:block;" />
             <!-- Dzień 47 badge -->
             <div style="position:absolute;bottom:52px;right:12px;background:#2e7d32;color:#fff;font-size:13px;font-weight:700;padding:5px 12px;border-radius:6px;">88 dzień</div>
             <!-- Po bar -->
@@ -1656,7 +1750,7 @@
           </div>
 
         </div>
-        <div style="background:#f5f0e6;text-align:center;padding:8px 16px 0;font-size:11px;color:#c8b99a;">Zdjęcia mają charakter wyłącznie poglądowy</div>
+        <div style="background:#f5f0e6;text-align:center;padding:8px 16px 0;font-size:13px;color:#5a3d10;">Zdjęcia mają charakter wyłącznie poglądowy</div>
 
         <!-- Quote -->
         <div style="background:#f5f0e6;padding:12px 32px 28px;text-align:center;">
@@ -1670,7 +1764,7 @@
           <p style="font-size:clamp(15px,1.4vw,17px);color:var(--gray-800);line-height:1.8;margin-bottom:14px;font-style:italic;">
             "Budziłam się o 3 w nocy, mózg pracował jak przez watę, a lekarz mówił 'w tym wieku tak musi być'. Trzy tygodnie z Clean Slate i Zero-In — śpię całą noc, myślę klarownie i wczoraj po raz pierwszy od roku wyszłam na spacer z wnuczką bez bólu kolan."
           </p>
-          <div style="font-size:14px;color:var(--gray-800);font-weight:500;">— Barbara K., 62 lata ✓ Zweryfikowany zakup</div>
+          <div style="font-size:15px;color:var(--gray-800);font-weight:500;">— Barbara K., 62 lata ✓ Zweryfikowany zakup</div>
         </div>
 
       </div>
@@ -1693,7 +1787,7 @@
 
       <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:12px;">
 
-        <div style="background:var(--white);border:1.5px solid #e74c3c;border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:18px;">
+        <div class="czerwony-box" style="background:var(--white);border:1.5px solid #e74c3c;border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:18px;">
           <span style="font-size:40px;flex-shrink:0;">🍳</span>
           <div>
             <div style="font-weight:700;font-size:19px;color:var(--gray-800);margin-bottom:6px;">Ciężar dawnych, domowych nawyków</div>
@@ -1701,7 +1795,7 @@
           </div>
         </div>
 
-        <div style="background:var(--white);border:1.5px solid #e74c3c;border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:18px;">
+        <div class="czerwony-box" style="background:var(--white);border:1.5px solid #e74c3c;border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:18px;">
           <span style="font-size:40px;flex-shrink:0;">🛒</span>
           <div>
             <div style="font-weight:700;font-size:19px;color:var(--gray-800);margin-bottom:6px;">„Puste" jedzenie z supermarketów</div>
@@ -1709,7 +1803,7 @@
           </div>
         </div>
 
-        <div style="background:var(--white);border:1.5px solid #e74c3c;border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:18px;">
+        <div class="czerwony-box" style="background:var(--white);border:1.5px solid #e74c3c;border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:18px;">
           <span style="font-size:40px;flex-shrink:0;">💊</span>
           <div>
             <div style="font-weight:700;font-size:19px;color:var(--gray-800);margin-bottom:6px;">Błędne koło syntetycznych pigułek</div>
@@ -1717,7 +1811,7 @@
           </div>
         </div>
 
-        <div style="background:var(--white);border:1.5px solid #e74c3c;border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:18px;">
+        <div class="czerwony-box" style="background:var(--white);border:1.5px solid #e74c3c;border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:18px;">
           <span style="font-size:40px;flex-shrink:0;">🔥</span>
           <div>
             <div style="font-weight:700;font-size:19px;color:var(--gray-800);margin-bottom:6px;">Wyczerpane centrum dowodzenia</div>
@@ -1728,8 +1822,8 @@
       </div>
 
       <!-- Rozciągnięty box na dole -->
-      <div style="background:var(--white);border:1.5px solid #e74c3c;border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:18px;margin-bottom:16px;">
-        <span style="font-size:40px;flex-shrink:0;">🩺</span>
+      <div class="wyniki-box czerwony-box" style="background:var(--white);border:1.5px solid #e74c3c;border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:18px;margin-bottom:16px;">
+        <span class="wyniki-icon" style="font-size:40px;flex-shrink:0;">🩺</span>
         <div>
           <div style="font-weight:700;font-size:19px;color:var(--gray-800);margin-bottom:6px;">„Wyniki ma pani wzorowe"</div>
           <div style="font-size:17px;color:var(--gray-800);line-height:1.7;">Morfologia w normie, tarczyca w porządku, cukier w widełkach. Lekarz patrzy w monitor, rozkłada ręce i mówi: „Wyniki są okej. W tym wieku to normalne, że ma pani mniej energii. To genetyka, stres i PESEL. Proszę po prostu więcej odpoczywać". Wychodzisz z gabinetu z poczuciem totalnej bezradności. Bo na papierze jesteś okazem zdrowia, ale we własnym ciele czujesz się zmęczona życiem, sztywna i ociężała.</div>
@@ -1749,7 +1843,7 @@
   <section style="display:none;background:var(--white);padding:70px clamp(20px,5vw,70px);">
     <div style="max-width:860px;margin:0 auto;">
 
-      <div style="font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--navy);text-align:center;margin-bottom:14px;">Przyczyna podstawowa</div>
+      <div style="font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);text-align:center;margin-bottom:14px;">Przyczyna podstawowa</div>
       <h2 style="font-size:clamp(30px,4vw,52px);font-weight:800;color:var(--gray-800);text-align:center;line-height:1.15;margin-bottom:32px;">Codziennie wystawiasz organizm na próbę. <span style="color:var(--navy);">Oto dowód.</span></h2>
 
       <div style="background:#fdecea;border:1.5px solid #e74c3c;border-radius:16px;padding:32px 36px;">
@@ -1823,34 +1917,34 @@
   <section style="background:#eafaf1;padding:70px clamp(20px,5vw,70px);">
     <div style="max-width:860px;margin:0 auto;">
 
-      <div style="font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.65);text-align:center;margin-bottom:14px;">Co zyskujesz</div>
+      <div style="font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#3D3D3D;text-align:center;margin-bottom:14px;">Co zyskujesz</div>
       <h2 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:#3A3A3A;text-align:center;line-height:1.15;margin-bottom:36px;">5 zmian, które poczujesz jako pierwsze</h2>
 
       <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:36px;">
 
-        <div style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:14px;padding:12px;display:flex;align-items:center;gap:20px;">
-          <div style="width:200px;min-width:200px;height:160px;background:#d9d9d9;border-radius:8px;flex-shrink:0;"></div>
-          <div><div style="font-weight:700;font-size:17px;color:#1A1A1A;margin-bottom:6px;">Szczelne jelita i ulga po jedzeniu</div><div style="font-size:13.5px;color:#2a2a2a;line-height:1.6;">Twoje jelita znów zaczynają działać jak skuteczny filtr. Przyswajają cenne witaminy, a blokują to, co podrażnia od środka. Koniec z uciążliwą ciężkością po tradycyjnym, niedzielnym obiedzie.</div></div>
+        <div class="zmiana-box" style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:20px;overflow:hidden;display:flex;align-items:stretch;gap:0;">
+          <div style="width:240px;min-width:240px;flex-shrink:0;"><img src="images/Gemini_Generated_Image_inwr2pinwr2pinwr_cleanup.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block;min-height:220px;" /></div>
+          <div style="padding:20px 22px 24px;"><div style="font-weight:800;font-size:19px;color:#1A1A1A;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;"><span style="color:#2e7d32;font-size:40px;display:block;line-height:1;margin-bottom:8px;">✓</span>Szczelne jelita i ulga po jedzeniu</div><div style="font-size:15px;color:#3a3a3a;line-height:1.7;">Twoje jelita znów zaczynają działać jak skuteczny filtr. Przyswajają cenne witaminy, a blokują to, co podrażnia od środka. Koniec z uciążliwą ciężkością po tradycyjnym, niedzielnym obiedzie.</div></div>
         </div>
 
-        <div style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:14px;padding:12px;display:flex;align-items:center;gap:20px;">
-          <div style="width:200px;min-width:200px;height:160px;background:#d9d9d9;border-radius:8px;flex-shrink:0;"></div>
-          <div><div style="font-weight:700;font-size:17px;color:#1A1A1A;margin-bottom:6px;">Lekki brzuch i spokojne trawienie</div><div style="font-size:13.5px;color:#2a2a2a;line-height:1.6;">Roślinne składniki łagodnie przywracają porządek i równowagę w Twoim brzuchu. Zapomnij o wzdęciach i dyskomforcie. Odzyskujesz naturalną regularność wypróżnień, która daje Ci spokój, gdy wychodzisz z domu.</div></div>
+        <div class="zmiana-box" style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:20px;overflow:hidden;display:flex;align-items:stretch;gap:0;">
+          <div style="width:240px;min-width:240px;flex-shrink:0;"><img src="images/Gemini_Generated_Image_etnueletnueletnu_cleanup.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block;min-height:220px;" /></div>
+          <div style="padding:20px 22px 24px;"><div style="font-weight:800;font-size:19px;color:#1A1A1A;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;"><span style="color:#2e7d32;font-size:40px;display:block;line-height:1;margin-bottom:8px;">✓</span>Lekki brzuch i spokojne trawienie</div><div style="font-size:15px;color:#3a3a3a;line-height:1.7;">Roślinne składniki łagodnie przywracają porządek i równowagę w Twoim brzuchu. Zapomnij o wzdęciach i dyskomforcie. Odzyskujesz naturalną regularność wypróżnień, która daje Ci spokój, gdy wychodzisz z domu.</div></div>
         </div>
 
-        <div style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:14px;padding:12px;display:flex;align-items:center;gap:20px;">
-          <div style="width:200px;min-width:200px;height:160px;background:#d9d9d9;border-radius:8px;flex-shrink:0;"></div>
-          <div><div style="font-weight:700;font-size:17px;color:#1A1A1A;margin-bottom:6px;">Mniej porannej sztywności, więcej swobody</div><div style="font-size:13.5px;color:#2a2a2a;line-height:1.6;">Ziołowe ekstrakty pomagają wyciszyć wewnętrzne napięcia, przez które Twoje ciało wydawało się rano oporne i "zastane". Odzyskujesz swobodę ruchu, by bez dyskomfortu pracować w ogrodzie i wzmacniasz swoją naturalną odporność na cały rok.</div></div>
+        <div class="zmiana-box" style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:20px;overflow:hidden;display:flex;align-items:stretch;gap:0;">
+          <div style="width:240px;min-width:240px;flex-shrink:0;"><img src="images/Gemini_Generated_Image_yg69g1yg69g1yg69_cleanup.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block;min-height:220px;" /></div>
+          <div style="padding:20px 22px 24px;"><div style="font-weight:800;font-size:19px;color:#1A1A1A;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;"><span style="color:#2e7d32;font-size:40px;display:block;line-height:1;margin-bottom:8px;">✓</span>Mniej porannej sztywności, więcej swobody</div><div style="font-size:15px;color:#3a3a3a;line-height:1.7;">Ziołowe ekstrakty pomagają wyciszyć wewnętrzne napięcia, przez które Twoje ciało wydawało się rano oporne i "zastane". Odzyskujesz swobodę ruchu, by bez dyskomfortu pracować w ogrodzie i wzmacniasz swoją naturalną odporność na cały rok.</div></div>
         </div>
 
-        <div style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:14px;padding:12px;display:flex;align-items:center;gap:20px;">
-          <div style="width:200px;min-width:200px;height:160px;background:#d9d9d9;border-radius:8px;flex-shrink:0;"></div>
-          <div><div style="font-weight:700;font-size:17px;color:#1A1A1A;margin-bottom:6px;">Prawdziwa energia, a nie chwilowe pobudzenie</div><div style="font-size:13.5px;color:#2a2a2a;line-height:1.6;">Zamiast ratować się kolejną kawą, dostarczasz komórkom prawdziwe paliwo (jak naturalna D-ryboza). Znika przewlekłe znużenie i popołudniowa senność przed telewizorem. Masz równe siły na domowe obowiązki od rana aż po wieczór.</div></div>
+        <div class="zmiana-box" style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:20px;overflow:hidden;display:flex;align-items:stretch;gap:0;">
+          <div style="width:240px;min-width:240px;flex-shrink:0;"><img src="images/Gemini_Generated_Image_19es3f19es3f19es_cleanup.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block;min-height:220px;" /></div>
+          <div style="padding:20px 22px 24px;"><div style="font-weight:800;font-size:19px;color:#1A1A1A;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;"><span style="color:#2e7d32;font-size:40px;display:block;line-height:1;margin-bottom:8px;">✓</span>Prawdziwa energia, a nie chwilowe pobudzenie</div><div style="font-size:15px;color:#3a3a3a;line-height:1.7;">Zamiast ratować się kolejną kawą, dostarczasz komórkom prawdziwe paliwo (jak naturalna D-ryboza). Znika przewlekłe znużenie i popołudniowa senność przed telewizorem. Masz równe siły na domowe obowiązki od rana aż po wieczór.</div></div>
         </div>
 
-        <div style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:14px;padding:12px;display:flex;align-items:center;gap:20px;">
-          <div style="width:200px;min-width:200px;height:160px;background:#d9d9d9;border-radius:8px;flex-shrink:0;"></div>
-          <div><div style="font-weight:700;font-size:17px;color:#1A1A1A;margin-bottom:6px;">Wewnętrzne oczyszczanie i lżejsze poranki</div><div style="font-size:13.5px;color:#2a2a2a;line-height:1.6;">Pomagasz organizmowi sprawniej "wymieść" zanieczyszczenia, toksyny i chemię z przetworzonego jedzenia, z którymi styka się na co dzień. To jak codzienne wietrzenie organizmu, wreszcie wstajesz wypoczęta, z rześką i czystą głową.</div></div>
+        <div class="zmiana-box" style="background:#ffffff;border:1.5px solid #2e7d32;border-radius:20px;overflow:hidden;display:flex;align-items:stretch;gap:0;">
+          <div style="width:240px;min-width:240px;flex-shrink:0;"><img src="images/Gemini_Generated_Image_vmus71vmus71vmus_cleanup.webp" alt="" style="width:100%;height:100%;object-fit:cover;display:block;min-height:220px;" /></div>
+          <div style="padding:20px 22px 24px;"><div style="font-weight:800;font-size:19px;color:#1A1A1A;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;"><span style="color:#2e7d32;font-size:40px;display:block;line-height:1;margin-bottom:8px;">✓</span>Wewnętrzne oczyszczanie i lżejsze poranki</div><div style="font-size:15px;color:#3a3a3a;line-height:1.7;">Pomagasz organizmowi sprawniej "wymieść" zanieczyszczenia, toksyny i chemię z przetworzonego jedzenia, z którymi styka się na co dzień. To jak codzienne wietrzenie organizmu, wreszcie wstajesz wypoczęta, z rześką i czystą głową.</div></div>
         </div>
 
       </div>
@@ -1863,7 +1957,7 @@
   <section style="display:none;background:var(--white);padding:70px clamp(20px,5vw,70px);">
     <div style="max-width:760px;margin:0 auto;">
 
-      <div style="font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#b8922a;text-align:center;margin-bottom:14px;">Twoja transformacja</div>
+      <div style="font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#b8922a;text-align:center;margin-bottom:14px;">Twoja transformacja</div>
       <h2 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:var(--gray-800);text-align:center;line-height:1.15;margin-bottom:48px;">Co się dzieje tydzień po tygodniu</h2>
 
       <div style="position:relative;display:flex;flex-direction:column;gap:0;">
@@ -1880,7 +1974,7 @@
             </div>
           </div>
           <div style="flex:1;background:#faf6ee;border:1.5px solid #d4c9a8;border-radius:12px;padding:22px 26px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b8922a;margin-bottom:6px;">Dni 1–7</div>
+            <div style="font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#b8922a;margin-bottom:6px;">Dni 1–7</div>
             <div style="font-weight:800;font-size:17px;color:var(--gray-800);margin-bottom:10px;">Pierwsze sygnały od organizmu</div>
             <p style="font-size:17px;color:var(--gray-800);line-height:1.7;margin-bottom:12px;">Clean Slate zaczyna wiązać toksyny. Wiele kobiet zgłasza więcej energii rano i lżejszy brzuch. Sen zaczyna się stabilizować — budzenie o 3 w nocy staje się rzadsze.</p>
             <div style="font-size:14px;font-weight:700;color:var(--navy);">Pierwsze co kobiety zauważają: lżejszy poranek, łatwiej wstać z łóżka.</div>
@@ -1896,7 +1990,7 @@
             </div>
           </div>
           <div style="flex:1;background:#faf6ee;border:1.5px solid #d4c9a8;border-radius:12px;padding:22px 26px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b8922a;margin-bottom:6px;">Tydzień 2–3</div>
+            <div style="font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#b8922a;margin-bottom:6px;">Tydzień 2–3</div>
             <div style="font-weight:800;font-size:17px;color:var(--gray-800);margin-bottom:10px;">Mgła zaczyna odpływać</div>
             <p style="font-size:17px;color:var(--gray-800);line-height:1.7;margin-bottom:12px;">Zero-In zaczyna odbudowywać szlaki dopaminowe — skupienie wraca, myślenie staje się ostrzejsze. Energii wystarczy do wieczora bez kawy po południu. Wzdęcia wyraźnie mniej. Nastrój bardziej stabilny.</p>
             <div style="font-size:14px;font-weight:700;color:var(--navy);">Koniec z budzeniem się o 3 w nocy. Myślenie się klaruje. Energia wraca.</div>
@@ -1912,7 +2006,7 @@
             </div>
           </div>
           <div style="flex:1;background:#faf6ee;border:1.5px solid #d4c9a8;border-radius:12px;padding:22px 26px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b8922a;margin-bottom:6px;">Tydzień 4–6</div>
+            <div style="font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#b8922a;margin-bottom:6px;">Tydzień 4–6</div>
             <div style="font-weight:800;font-size:17px;color:var(--gray-800);margin-bottom:10px;">Widzisz to w lustrze</div>
             <p style="font-size:17px;color:var(--gray-800);line-height:1.7;margin-bottom:12px;">Restore odbudowuje mikrobiom — wzdęcia praktycznie znikają, skóra jest lepiej odżywiona. Bóle stawów wyraźnie mniej intensywne. Większość kobiet mówi, że to tydzień gdy po raz pierwszy poczuły się jak dawniej — lżej, klarowniej, żywiej.</p>
             <div style="font-size:14px;font-weight:700;color:#b8922a;">Bliskie zaczynają zauważać. Wyglądasz inaczej. Lżej. Bardziej jak dawna ty.</div>
@@ -1928,7 +2022,7 @@
             </div>
           </div>
           <div style="flex:1;background:#faf6ee;border:1.5px solid #d4c9a8;border-radius:12px;padding:22px 26px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#b8922a;margin-bottom:6px;">Dzień 90</div>
+            <div style="font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#b8922a;margin-bottom:6px;">Dzień 90</div>
             <div style="font-weight:800;font-size:17px;color:var(--gray-800);margin-bottom:10px;">Pełne efekty lub zwrot 100% pieniędzy</div>
             <p style="font-size:17px;color:var(--gray-800);line-height:1.7;margin-bottom:12px;">Komórki oczyszczone, szlaki dopaminowe odbudowane, mikrobiom zregenerowany. Pełny protokół zakończony. Jeśli nie jesteś zadowolona — pełny zwrot bez pytań.</p>
             <div style="font-size:14px;font-weight:700;color:#b8922a;">Gwarancja 90 dni: Zero ryzyka. Efekty albo pieniądze z powrotem.</div>
@@ -1943,7 +2037,7 @@
   <section style="display:none;background:var(--white);padding:70px clamp(20px,5vw,70px);">
     <div style="max-width:860px;margin:0 auto;">
 
-      <div style="font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#b8922a;text-align:center;margin-bottom:14px;">Dlaczego ROOT Brands</div>
+      <div style="font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#b8922a;text-align:center;margin-bottom:14px;">Dlaczego ROOT Brands</div>
       <h2 style="font-size:clamp(26px,3.5vw,44px);font-weight:800;color:var(--gray-800);text-align:center;margin-bottom:36px;">ROOT Brands vs. inne suplementy ze sklepu</h2>
 
       <div class="compare-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
@@ -2030,7 +2124,7 @@
   <section style="display:none;background:var(--navy);padding:70px clamp(20px,5vw,70px);">
     <div style="max-width:860px;margin:0 auto;">
 
-      <div style="font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.75);text-align:center;margin-bottom:14px;">Różnica</div>
+      <div style="font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.95);text-align:center;margin-bottom:14px;">Różnica</div>
       <h2 style="font-size:clamp(26px,3.5vw,44px);font-weight:800;color:#fff;text-align:center;margin-bottom:36px;">Przed i po protokole ROOT Brands</h2>
 
       <div class="compare-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
@@ -2118,35 +2212,35 @@
     <div style="max-width:760px;margin:0 auto;">
       <p style="text-align:center;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:12px;">SPOJRZENIE NA LICZBY</p>
       <h2 style="text-align:center;font-size:clamp(26px,4vw,42px);font-weight:800;color:#1A1A1A;line-height:1.2;margin-bottom:12px;">Czy ok. <span style="color:var(--navy);">10 zł</span> dziennie to dużo za odzyskanie sił i lekkości?</h2>
-      <p style="text-align:center;font-size:17px;color:#3a3a3a;margin-bottom:32px;">310 zł (wraz z przesyłką) za Restore to dla wielu z nas konkretny wydatek. Ale gdy rozbijesz tę kwotę na pojedyncze dni całego miesiąca, zobaczysz, że to pieniądze, które i tak niepostrzeżenie uciekają nam z portfela na doraźne „ratowanie" samopoczucia.</p>
+      <p style="text-align:center;font-size:17px;color:#3a3a3a;margin-bottom:32px;">Często wydajesz pieniądze na rzeczy, które dają ulgę tylko na chwilę, nie licząc, ile tak naprawdę Cię to kosztuje w skali miesiąca. Kiedy jednak zamienisz doraźne „ratowanie się" na jedno skuteczne rozwiązanie, zobaczysz, że dbanie o siebie jest prostsze, niż myślisz.</p>
 
       <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px;">
 
-        <div class="price-row" style="border:1.5px solid #e8e8e8;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
+        <div class="price-row" style="border:1.5px solid #999;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
           <div style="flex:1;">
-            <div style="font-size:17px;font-weight:700;color:#1A1A1A;margin-bottom:6px;">🍰 Codzienne drobnostki "na pocieszenie"</div>
+            <div style="font-size:21px;font-weight:800;color:#1A1A1A;margin-bottom:8px;">🍰 Codzienne drobnostki "na pocieszenie"</div>
             <div style="font-size:17px;color:#2a2a2a;line-height:1.6;">Kawałek ciasta do popołudniowej kawy, słodka drożdżówka z pobliskiej piekarni czy ulubiona gazeta. To drobne zakupy, którymi najczęściej poprawiamy sobie humor i próbujemy dodać energii, gdy ogarnia nas znużenie.</div>
           </div>
-          <div class="price-tag" style="font-size:17px;font-weight:700;color:var(--navy);white-space:nowrap;flex-shrink:0;">~ 8–12 zł / dzień</div>
+          <div class="price-tag" style="font-size:22px;font-weight:800;color:var(--navy);white-space:nowrap;flex-shrink:0;">~ 8–12 zł <span style="color:#1A1A1A;">/ dzień</span></div>
         </div>
 
-        <div class="price-row" style="border:1.5px solid #e8e8e8;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
+        <div class="price-row" style="border:1.5px solid #999;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
           <div style="flex:1;">
-            <div style="font-size:17px;font-weight:700;color:#1A1A1A;margin-bottom:6px;">💊 Doraźna apteczka "na przetrwanie"</div>
+            <div style="font-size:21px;font-weight:800;color:#1A1A1A;margin-bottom:8px;">💊 Doraźna apteczka "na przetrwanie"</div>
             <div style="font-size:17px;color:#2a2a2a;line-height:1.6;">Magnez z telewizyjnej reklamy, kropelki żołądkowe, herbatka na trawienie, zioła na sen i zwykłe maści na zesztywniałe ciało. Zostawiasz w aptece kilkadziesiąt złotych co kilka dni, próbując jedynie zamaskować uciążliwy dyskomfort.</div>
           </div>
-          <div class="price-tag" style="font-size:17px;font-weight:700;color:var(--navy);white-space:nowrap;flex-shrink:0;">~ 5–10 zł / dzień</div>
+          <div class="price-tag" style="font-size:22px;font-weight:800;color:var(--navy);white-space:nowrap;flex-shrink:0;">~ 5–10 zł <span style="color:#1A1A1A;">/ dzień</span></div>
         </div>
 
         <div class="price-row" style="border:1.5px solid #2e7d32;border-radius:12px;padding:20px 24px;background:#f1f8f1;display:flex;align-items:center;gap:20px;">
           <div style="flex:1;">
-            <div style="font-size:17px;font-weight:700;color:#1A1A1A;margin-bottom:6px;">🌿 ROOT Restore — Prawdziwe wsparcie od wewnątrz</div>
+            <div style="font-size:21px;font-weight:800;color:#1A1A1A;margin-bottom:8px;">🌿 ROOT Restore<br>- Prawdziwe wsparcie od wewnątrz</div>
             <div style="font-size:17px;color:#2a2a2a;line-height:1.6;">Za równowartość przysłowiowej kawy na mieście otrzymujesz zaawansowaną, płynną formułę, która uderza w przyczynę braku sił. Uszczelnia jelita, oczyszcza i przywraca naturalną energię na poziomie komórkowym, zamiast tylko chwilowo maskować zmęczenie.</div>
           </div>
-          <div class="price-tag" style="font-size:17px;font-weight:700;color:#2e7d32;white-space:nowrap;flex-shrink:0;">~ 10 zł / dzień ✓</div>
+          <div class="price-tag" style="font-size:22px;font-weight:800;color:#2e7d32;white-space:nowrap;flex-shrink:0;">~ 10 zł / dzień ✓</div>
         </div>
 
-        <div class="price-row" style="border:1.5px solid #e8e8e8;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
+        <div class="price-row" style="border:1.5px solid #999;border-radius:12px;padding:20px 24px;background:#fff;display:flex;align-items:center;gap:20px;">
           <div style="flex:1;">
             <div style="font-size:17px;font-weight:700;color:#1A1A1A;margin-bottom:6px;">⏳ Odkładanie własnego życia na "kiedyś"</div>
             <div style="font-size:17px;color:#2a2a2a;line-height:1.6;">Kolejne popołudnie przeczekane w fotelu przed telewizorem. Odpuszczony spacer, zaniedbany ogródek, odwołane spotkanie z wnukami z powodu ociężałości i braku sił. Poczucia uciekającego czasu i traconych chwil nie da się wycenić żadnymi pieniędzmi.</div>
@@ -2168,7 +2262,7 @@
 
       <div style="display:flex;flex-direction:column;gap:12px;">
 
-        <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:14px;overflow:hidden;">
+        <div style="background:#fff;border:1.5px solid #999;border-radius:14px;overflow:hidden;">
           <button onclick="toggleFaq(this)" aria-expanded="false" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
             <span style="font-size:36px;flex-shrink:0;">🤔</span>
             <span style="flex:1;font-size:18px;font-weight:600;color:#1A1A1A;">"Próbowałam już wszystkiego i nic nie działało."</span>
@@ -2179,7 +2273,7 @@
           </div>
         </div>
 
-        <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:14px;overflow:hidden;">
+        <div style="background:#fff;border:1.5px solid #999;border-radius:14px;overflow:hidden;">
           <button onclick="toggleFaq(this)" aria-expanded="false" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
             <span style="font-size:36px;flex-shrink:0;">🌿</span>
             <span style="flex:1;font-size:18px;font-weight:600;color:#1A1A1A;">"Mój żołądek jest wrażliwy. Czy to mnie nie podrażni?"</span>
@@ -2190,7 +2284,7 @@
           </div>
         </div>
 
-        <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:14px;overflow:hidden;">
+        <div style="background:#fff;border:1.5px solid #999;border-radius:14px;overflow:hidden;">
           <button onclick="toggleFaq(this)" aria-expanded="false" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
             <span style="font-size:36px;flex-shrink:0;">⏱️</span>
             <span style="flex:1;font-size:18px;font-weight:600;color:#1A1A1A;">"Kiedy w końcu zobaczę rezultaty?"</span>
@@ -2201,7 +2295,7 @@
           </div>
         </div>
 
-        <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:14px;overflow:hidden;">
+        <div style="background:#fff;border:1.5px solid #999;border-radius:14px;overflow:hidden;">
           <button onclick="toggleFaq(this)" aria-expanded="false" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
             <span style="font-size:36px;flex-shrink:0;">💊</span>
             <span style="flex:1;font-size:18px;font-weight:600;color:#1A1A1A;">"Czy to bezpieczne? Biorę leki na receptę od kardiologa/diabetologa."</span>
@@ -2212,7 +2306,7 @@
           </div>
         </div>
 
-        <div style="background:#fff;border:1.5px solid #e8e8e8;border-radius:14px;overflow:hidden;">
+        <div style="background:#fff;border:1.5px solid #999;border-radius:14px;overflow:hidden;">
           <button onclick="toggleFaq(this)" aria-expanded="false" style="width:100%;display:flex;align-items:center;gap:14px;padding:22px 24px;background:none;border:none;cursor:pointer;font-family:var(--font);text-align:left;">
             <span style="font-size:36px;flex-shrink:0;">💰</span>
             <span style="flex:1;font-size:18px;font-weight:600;color:#1A1A1A;">"Dlaczego to jest droższe niż suplementy z apteki za rogiem?"</span>
@@ -2235,22 +2329,22 @@
 
       <div style="background:#e74c3c;border-radius:14px 14px 0 0;padding:28px 32px;text-align:center;">
         <p style="font-size:17px;font-weight:800;color:#fff;line-height:1.5;margin-bottom:10px;">Uciążliwe zmęczenie i poczucie ociężałości nie znikną same. Ignorowanie sygnałów, które wysyła wyczerpane ciało, to równia pochyła.</p>
-        <p style="font-size:17px;color:rgba(255,255,255,.85);line-height:1.6;">Oto jak często wygląda rzeczywistość kobiety, która wszystko zrzuca na „podeszły wiek":</p>
+        <p style="font-size:17px;color:rgba(255,255,255,.97);line-height:1.6;">Oto jak często wygląda rzeczywistość kobiety, która wszystko zrzuca na „podeszły wiek":</p>
       </div>
 
-      <div style="border:1.5px solid #e8e8e8;border-top:none;border-radius:0 0 14px 14px;overflow:hidden;">
+      <div style="border:1.5px solid #999;border-top:none;border-radius:0 0 14px 14px;overflow:hidden;">
 
-        <div style="display:flex;align-items:flex-start;gap:16px;padding:22px 24px;border-bottom:1px solid #f0f0f0;">
+        <div style="display:flex;align-items:flex-start;gap:16px;padding:22px 24px;border-bottom:1px solid #bbb;">
           <span style="font-size:24px;flex-shrink:0;margin-top:2px;">📅</span>
           <p style="font-size:17px;color:#333;line-height:1.7;"><strong style="color:#1A1A1A;">Miesiąc 1: Przyzwyczajenie do dyskomfortu</strong><br>Uczucie porannego rozbicia staje się normą. Rozkojarzenie i fizyczna ciężkość towarzyszą Ci od samego rana, a niespokojne noce sprawiają, że nigdy nie czujesz się w pełni zregenerowana.</p>
         </div>
 
-        <div style="display:flex;align-items:flex-start;gap:16px;padding:22px 24px;border-bottom:1px solid #f0f0f0;">
+        <div style="display:flex;align-items:flex-start;gap:16px;padding:22px 24px;border-bottom:1px solid #bbb;">
           <span style="font-size:24px;flex-shrink:0;margin-top:2px;">📅</span>
           <p style="font-size:17px;color:#333;line-height:1.7;"><strong style="color:#1A1A1A;">Miesiąc 3: Rezygnacja z planów</strong><br>Fizyczny opór ciała staje się zbyt duży. Zwykłe wyjście na spacer, opieka nad wnukami czy spotkanie z koleżanką wymagają długiego „zbierania sił". Coraz częściej odwołujesz plany, wybierając kanapę, bo po prostu nie masz napędu do działania.</p>
         </div>
 
-        <div style="display:flex;align-items:flex-start;gap:16px;padding:22px 24px;border-bottom:1px solid #f0f0f0;">
+        <div style="display:flex;align-items:flex-start;gap:16px;padding:22px 24px;border-bottom:1px solid #bbb;">
           <span style="font-size:24px;flex-shrink:0;margin-top:2px;">📅</span>
           <p style="font-size:17px;color:#333;line-height:1.7;"><strong style="color:#1A1A1A;">Miesiąc 6: Smutna akceptacja</strong><br>Zaczynasz wierzyć otoczeniu, że „w tym wieku tak już musi być". Frustracja przeplata się ze zrezygnowaniem. Z trudem przypominasz sobie tę pełną energii, uśmiechniętą kobietę, którą byłaś jeszcze kilka lat temu.</p>
         </div>
@@ -2316,7 +2410,7 @@
   <!-- SECTION: SELF-CHECK -->
   <section style="display:none;background:var(--navy);padding:70px clamp(20px,5vw,70px);">
     <div style="max-width:760px;margin:0 auto;">
-      <p style="text-align:center;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:14px;">SPRAWDŹ SIEBIE</p>
+      <p style="text-align:center;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.95);margin-bottom:14px;">SPRAWDŹ SIEBIE</p>
       <h2 style="text-align:center;font-size:clamp(26px,4vw,42px);font-weight:800;color:#fff;margin-bottom:10px;">Czy to brzmi znajomo?</h2>
       <p style="text-align:center;font-size:17px;color:#f5a623;margin-bottom:32px;">Zaznacz wszystko, co dotyczy Ciebie.</p>
 
@@ -2390,28 +2484,28 @@
 
         <!-- Col 1 -->
         <div style="display:flex;flex-direction:column;gap:12px;min-width:260px;flex:1;">
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Katarzyna D.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Katarzyna D.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#e0e0e0" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#e0e0e0" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#e0e0e0" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#e0e0e0" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Nie spodziewałam się tak szybkiej zmiany. Już po tygodniu mniej wzdęć i więcej energii rano.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Barbara W.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Barbara W.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Mój organizm w końcu współpracuje zamiast walczyć. Ten spokój to coś, za czym tęskniłam, nie wiedząc nawet że mi go brakuje.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Zofia K.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Zofia K.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Huśtawki nastroju niszczyły moje małżeństwo. Teraz jestem spokojna i zrównoważona. Mąż mówi że to jak inna osoba — ale lepsza wersja.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Irena L.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Irena L.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Najlepsze jest to jak spokojna jest ta energia. Bez nerwowości, bez niepokoju — po prostu stabilna przez cały dzień. Koniec ze zjazdami.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Halina M.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Halina M.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Zatrzymywanie wody sprawiało że pierścionki nie wchodziły, buty uwierały. Teraz wszystko pasuje normalnie — czuję się o wiele lepiej.</p>
           </div>
@@ -2419,28 +2513,28 @@
 
         <!-- Col 2 -->
         <div style="display:flex;flex-direction:column;gap:12px;min-width:260px;flex:1;">
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Danuta F.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Danuta F.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Ciało jest mniej opuchnięte wszędzie. Uczucie ucisku i napięcia znikło. Mogę wreszcie czuć się komfortowo we własnej skórze.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Bożena C.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Bożena C.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Wzdęcia wpływały na wszystko — pewność siebie, ubrania, komfort. Teraz czuję się normalnie i lekko — jakby ktoś zdjął mi ciężar z brzucha.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Renata R.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Renata R.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Ciężkość w żołądku całkowicie znikła. Budzę się lekka i komfortowa zamiast opuchnięta i ociężała. Różnica jest ogromna.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Celina D.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Celina D.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Moje ciało przestało walczyć samo z sobą. Znikło to ciągłe uczucie wzdęcia i ciężaru. Mogę wreszcie normalnie oddychać.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Mirosława K.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Mirosława K.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Wzdęcia tak bardzo niszczyły moją pewność siebie. Teraz czuję się lekka i moje ciało znów czuje się normalnie.</p>
           </div>
@@ -2448,28 +2542,28 @@
 
         <!-- Col 3 -->
         <div style="display:flex;flex-direction:column;gap:12px;min-width:260px;flex:1;">
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Grażyna G.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Grażyna G.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Emocjonalna huśtawka zatrzymała się. Jestem zrównoważona i nie reaguję przesadnie na małe rzeczy. Ulga, której nie da się opisać.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Anna B.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Anna B.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Czuję się bardziej sobą niż od lat. Wahania nastroju znikły i moje ciało wreszcie czuje się komfortowo w swojej skórze.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Felicja M.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Felicja M.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Ubrania pasują komfortowo po raz pierwszy od miesięcy. Nie z powodu utraty wagi — po prostu mniej tego opuchniętego uczucia.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Jadwiga S.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Jadwiga S.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Byłam sceptyczna bo próbowałam wszystkiego. Ale to jest inne. Stabilna energia, brak wahań nastroju, mniej wzdęć. Działa.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Agnieszka P.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Agnieszka P.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Moja drażliwość narastała co miesiąc. Teraz jestem cierpliwa z wnukami i naprawdę cieszę się czasem z rodziną.</p>
           </div>
@@ -2477,28 +2571,28 @@
 
         <!-- Col 4 -->
         <div style="display:flex;flex-direction:column;gap:12px;min-width:260px;flex:1;">
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Cecylia W.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Cecylia W.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Po tylu próbach nie oczekiwałam wiele. Ale nastrój stabilny, wzdęcia mniejsze, energia wyrównana. Naprawdę jestem pod wrażeniem.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Helena J.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Helena J.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Mam energię, ale to nie jest to dziwne pobudzenie od kofeiny. Po prostu spokojna, stała energia. Idealna żeby przejść przez dzień.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Franciszka N.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Franciszka N.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Nie spodziewałam się tak dużej zmiany. Nastrój stabilny, ciało lżejsze i w końcu rozpoznaję siebie w lustrze.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Małgorzata T.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Małgorzata T.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Nie rozumiałam czemu ciągle płakałam bez powodu. Ta stabilność emocjonalna teraz zmienia życie. Wreszcie znów jestem sobą.</p>
           </div>
-          <div style="border:1.5px solid #e8e8e8;border-radius:12px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Aleksandra R.</span><span style="font-size:12px;color:#3aaa7a;">✔ Zweryfikowano</span></div>
+          <div style="border:1.5px solid #999;border-radius:12px;padding:16px;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span style="font-size:13px;font-weight:600;color:var(--navy);">Aleksandra R.</span><span style="font-size:13px;color:#1a7a46;">✔ Zweryfikowano</span></div>
             <div style="display:flex;gap:2px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#f5a623" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <p style="font-size:13px;color:#333;line-height:1.6;">Czuję się bardziej sobą niż od bardzo długiego czasu. Wahania nastroju znikły i moje ciało czuje się komfortowo.</p>
           </div>
@@ -2508,7 +2602,7 @@
 
       <!-- Show more -->
       <div style="text-align:center;margin-top:32px;">
-        <button onclick="this.closest('section').querySelector('#moreReviews').style.display='block';this.style.display='none';" style="padding:12px 32px;border:1.5px solid #ccc;border-radius:8px;background:#fff;font-size:14px;font-weight:600;color:#2a2a2a;cursor:pointer;">Pokaż więcej opinii</button>
+        <button onclick="this.closest('section').querySelector('#moreReviews').style.display='block';this.style.display='none';" style="padding:14px 32px;border:1.5px solid #ccc;border-radius:8px;background:#fff;font-size:15px;font-weight:600;color:#2a2a2a;cursor:pointer;min-height:48px;">Pokaż więcej opinii</button>
       </div>
       <div id="moreReviews" style="display:none;"></div>
 
@@ -2522,9 +2616,9 @@
       <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;color:#1A1A1A;text-align:center;line-height:1.1;margin-bottom:12px;text-transform:uppercase;letter-spacing:-0.5px;">Wszystko co najlepsze <span style="color:var(--accent);">z natury</span></h2>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
 
-        <div style="border-radius:20px;overflow:hidden;border:1px solid #ebebeb;">
+        <div style="border-radius:20px;overflow:hidden;border:1px solid #999;">
           <div style="position:relative;background:#f5f0e8;aspect-ratio:4/3;overflow:hidden;">
-            <img src="images/Kurkuma.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
+            <img src="images/Kurkuma.webp" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
           </div>
           <div style="padding:20px 22px 24px;">
             <div style="font-size:19px;font-weight:800;color:#1A1A1A;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;">🌿 Kurkuma</div>
@@ -2532,9 +2626,9 @@
           </div>
         </div>
 
-        <div style="border-radius:20px;overflow:hidden;border:1px solid #ebebeb;">
+        <div style="border-radius:20px;overflow:hidden;border:1px solid #999;">
           <div style="position:relative;background:#f0f5f0;aspect-ratio:4/3;overflow:hidden;">
-            <img src="images/Aloes.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
+            <img src="images/Aloes.webp" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
           </div>
           <div style="padding:20px 22px 24px;">
             <div style="font-size:19px;font-weight:800;color:#1A1A1A;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;">🌱 Aloes barbadensis</div>
@@ -2542,9 +2636,9 @@
           </div>
         </div>
 
-        <div style="border-radius:20px;overflow:hidden;border:1px solid #ebebeb;">
+        <div style="border-radius:20px;overflow:hidden;border:1px solid #999;">
           <div style="position:relative;background:#1a1a1a;aspect-ratio:4/3;overflow:hidden;">
-            <img src="images/Czarnuszka.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
+            <img src="images/Czarnuszka.webp" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
           </div>
           <div style="padding:20px 22px 24px;">
             <div style="font-size:19px;font-weight:800;color:#1A1A1A;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;">🖤 Czarnuszka siewna</div>
@@ -2552,9 +2646,9 @@
           </div>
         </div>
 
-        <div style="border-radius:20px;overflow:hidden;border:1px solid #ebebeb;">
+        <div style="border-radius:20px;overflow:hidden;border:1px solid #999;">
           <div style="position:relative;background:#fdf0f0;aspect-ratio:4/3;overflow:hidden;">
-            <img src="images/Maliny.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
+            <img src="images/Maliny.webp" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
           </div>
           <div style="padding:20px 22px 24px;">
             <div style="font-size:19px;font-weight:800;color:#1A1A1A;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;">🫐 Maliny</div>
@@ -2562,9 +2656,9 @@
           </div>
         </div>
 
-        <div style="border-radius:20px;overflow:hidden;border:1px solid #ebebeb;">
+        <div style="border-radius:20px;overflow:hidden;border:1px solid #999;">
           <div style="position:relative;background:#f5f2e8;aspect-ratio:4/3;overflow:hidden;">
-            <img src="images/ocet_jabłkowy.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
+            <img src="images/ocet_jabłkowy.webp" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
           </div>
           <div style="padding:20px 22px 24px;">
             <div style="font-size:19px;font-weight:800;color:#1A1A1A;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;">🍎 Ocet jabłkowy</div>
@@ -2572,9 +2666,9 @@
           </div>
         </div>
 
-        <div style="border-radius:20px;overflow:hidden;border:1px solid #ebebeb;">
+        <div style="border-radius:20px;overflow:hidden;border:1px solid #999;">
           <div style="position:relative;background:#f5f0f8;aspect-ratio:4/3;overflow:hidden;">
-            <img src="images/Resweratrol.png" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
+            <img src="images/Resweratrol.webp" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;" />
           </div>
           <div style="padding:20px 22px 24px;">
             <div style="font-size:19px;font-weight:800;color:#1A1A1A;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;">🍇 Resweratrol</div>
@@ -2585,7 +2679,7 @@
       </div>
 
       <div style="text-align:center;margin-top:36px;">
-        <button onclick="document.getElementById('ingredientsFull').style.display=document.getElementById('ingredientsFull').style.display==='none'?'block':'none'" style="padding:12px 28px;border:1.5px solid #ccc;border-radius:40px;background:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font);color:#1A1A1A;">Pełna lista składników</button>
+        <button onclick="document.getElementById('ingredientsFull').style.display=document.getElementById('ingredientsFull').style.display==='none'?'block':'none'" style="padding:14px 28px;border:1.5px solid #ccc;border-radius:40px;background:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font);color:#1A1A1A;min-height:48px;">Pełna lista składników</button>
         <div id="ingredientsFull" style="display:none;margin-top:16px;text-align:left;background:#f8f8f8;border-radius:12px;padding:20px 24px;font-size:15px;color:#3a3a3a;line-height:1.8;">
           Aloes barbadensis (Aloe Vera), D-ryboza, Kurkuma długa (Curcuma longa) ekstrakt, Czarnuszka siewna (Nigella sativa) ekstrakt, Resweratrol (z Rdestowca japońskiego), Enzymy roślinne (bromelaina, papaina), Probiotyki (Lactobacillus acidophilus), Cynk, Witamina C, Witamina D3
         </div>
@@ -2597,17 +2691,16 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div class="footer-brand">ROOT Brands</div>
       <div class="footer-links">
-        <a href="#">Polityka prywatności</a>
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
         <a href="#">Regulamin</a>
         <a href="#">Polityka wysyłki</a>
-        <a href="#">Zwroty i reklamacje</a>
+        <a href="zwroty.html">Zwroty i reklamacje</a>
         <a href="#">Kontakt</a>
       </div>
       <div class="footer-copy">© 2026 ROOT Brands. Wszelkie prawa zastrzeżone.</div>
     </div>
-    <div style="text-align:center;padding:12px 24px 0;font-size:11px;color:#888;line-height:1.6;">Suplement diety nie może być stosowany jako substytut zróżnicowanej diety. Nie przekraczać zalecanej porcji do spożycia w ciągu dnia. Przechowywać w miejscu niedostępnym dla małych dzieci.</div>
+    <div style="text-align:center;padding:12px 24px 0;font-size:13px;color:#3D3D3D;line-height:1.6;">Suplement diety nie może być stosowany jako substytut zróżnicowanej diety. Nie przekraczać zalecanej porcji do spożycia w ciągu dnia. Przechowywać w miejscu niedostępnym dla małych dzieci.</div>
   </footer>
 
   <!-- STICKY ATC -->
@@ -2615,15 +2708,15 @@
     <div class="sticky-atc-left">
       <div style="position:relative;width:90px;height:0;overflow:visible;flex-shrink:0;align-self:flex-end;margin-bottom:0;">
         <div style="position:absolute;bottom:0;left:0;width:90px;height:90px;background:#fff;border-radius:12px;box-shadow:0 -4px 12px rgba(0,0,0,.12);">
-          <img src="images/restore-main.png" style="width:100%;height:100%;object-fit:contain;" />
+          <img src="images/restore-main.webp" style="width:100%;height:100%;object-fit:contain;" />
         </div>
       </div>
       <div style="display:flex;flex-direction:row;align-items:center;gap:12px;">
-        <span class="sticky-atc-name" style="font-size:19px;">Restore — 15 saszetek</span>
+        <span class="sticky-atc-name" style="font-size:19px;">Restore - 15 saszetek</span>
         <span class="sticky-atc-price" style="font-size:20px;font-weight:800;color:#1A1A1A;">273,00 zł</span>
       </div>
     </div>
-    <button class="btn-sticky" aria-label="Dodaj Restore do koszyka">Dodaj do koszyka</button>
+    <button class="btn-sticky" aria-label="Dodaj Restore do koszyka">Dodaj do koszyka<span class="sticky-price-mobile"> — 273,00 zł</span></button>
   </div>
 
   <script>
@@ -2671,22 +2764,26 @@
 
     // Gallery carousel
     let galleryIndex = 0;
-    const galleryCount = 10;
+    const galleryCountDesktop = 11;
+    const galleryCountMobile = 3;
     const galleryVisible = 6;
+    function galleryCount() { return window.innerWidth <= 768 ? galleryCountMobile : galleryCountDesktop; }
 
     function galleryGoto(n) {
+      const count = galleryCount();
       document.getElementById('gallerySlide' + galleryIndex).style.display = 'none';
-      document.querySelectorAll('#galleryThumbs .thumb')[galleryIndex].style.borderColor = 'transparent';
-      galleryIndex = (n + galleryCount) % galleryCount;
+      galleryIndex = (n + count) % count;
       document.getElementById('gallerySlide' + galleryIndex).style.display = 'block';
+      // desktop thumbnails (optional — may not exist on mobile)
       const thumbs = document.querySelectorAll('#galleryThumbs .thumb');
-      thumbs[galleryIndex].style.borderColor = 'var(--navy)';
-      // scroll thumbs strip so active thumb is visible
-      const thumbEl = thumbs[galleryIndex];
-      const thumbW = thumbEl.offsetWidth + 10;
-      const offset = Math.max(0, galleryIndex - galleryVisible + 2) * thumbW;
-      document.getElementById('galleryThumbs').style.transform = 'translateX(-' + offset + 'px)';
-      // update mobile dots
+      if (thumbs.length) {
+        thumbs.forEach(t => t.style.borderColor = 'transparent');
+        thumbs[galleryIndex].style.borderColor = 'var(--navy)';
+        const thumbW = thumbs[galleryIndex].offsetWidth + 10;
+        const offset = Math.max(0, galleryIndex - galleryVisible + 2) * thumbW;
+        document.getElementById('galleryThumbs').style.transform = 'translateX(-' + offset + 'px)';
+      }
+      // mobile dots
       document.querySelectorAll('.mob-dot').forEach((d, i) => d.classList.toggle('active', i === galleryIndex));
     }
 
